@@ -8,12 +8,17 @@ body {
     width: 1080px;
 }
 
-a:link {
-    text-decoration: none;
+p {
+    padding: 16px 8px;
 }
 
-a:visited {
+hr {
+    color: #D2D2D2;
+}
+
+a:visited, a:link, a:hover {
     color: #FFF;
+    text-decoration: none;
 }
 
 .cabecalho {
@@ -25,4 +30,124 @@ a:visited {
     padding-bottom: 10px;
     border: 1px solid white;
     border-radius: 4px;
+}
+
+.foto-cabecalho {
+    max-width: 887px;
+    margin-left: 10vw;
+}
+
+.corpo {
+    background-color: #D2D2D2;
+    border: -1px solid #FFF;
+    display: block;
+    margin-left: 10vw;
+    width: 888px;
+    min-height: 550px;
+    height: auto;
+}
+
+.rodape {
+    background-color: #7745FF;
+    color: #FFF;
+    text-align: center;
+    margin-left: 10vw;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 1px solid white;
+    border-radius: 4px;
+}
+
+#index-pagina {
+    padding: 8px;
+    color: #7745FF;
+}
+
+#titulo {
+    margin-top: 8px;
+    text-align: center;
+}
+
+#texto-principal {
+    padding-left: 16px;
+}
+
+.novo-produto {
+    padding-top: 8px;
+    padding-left: 16px;
+    border: none;
+}
+
+.formulario {
+    margin-top: 16px;
+    border: 1px solid #D2D2D2;
+    
+}
+
+input {
+    border-radius: 8px;
+    width: 300px;
+    padding: 3px;
+}
+
+td {
+    padding: 12px;
+    margin: 16px;
+    border: 1px solid black;
+}
+
+th {
+    margin: 12px;
+    padding: 16px;
+    border: 1px solid black;
+}
+
+
+button {
+    background-color: #7745FF;
+    color: #FFF;
+    border-radius: 6px;
+    padding: 4px 16px;
+    border: none;
+}
+
+#botao-enviar {
+    margin-left: 12px;
+    margin-top: 16px;
+}
+
+.controle-de-estoque {
+    padding: 16px;
+    padding-left: 32px;
+    padding-bottom: 0px;
+}
+
+#tabela-de-estoque {
+    margin: 16px;
+    padding: 16px;
+}
+
+#bug {
+    color: #D2D2D2;
+}
+
+#staff {
+    padding: 16px;
+    margin: 16px;
+    text-align: center;
+}
+
+#tabela-staff {
+    padding: 16px 128px;
+    margin: 16px;
+    
+    text-align: center;
+}
+
+.staff {
+    padding: 16px 60px;
+}
+
+.sem-borda {
+    border: none;
 }

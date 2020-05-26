@@ -6,38 +6,56 @@
     <title>Adicionar novos produtos</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body background="imagens/background.jpg" widht=100%>
-    <div align="middle"><img src="imagens/logo-tgs.png" alt="logomarca"></div>
-    <h4>
-    <a href="index.html">Página Inicial |</a> 
-    <a href="controle-de-estoque.html">Controle de Estoque |</a>
-    <a href="adicionar-produtos.html">Adicionar Novos Produtos |</a>
-    <a href="funcionarios.html">Funcionários</a>
-    </h4>
-    <div>
-        <form action="#">
-            <h3>Adicionar Novo Produto</h3>
-            <table>
-                <tr>
-                    <td><label for="foto">Foto:</label></td>
-                    <td><input type="text" name="foto" id="foto" placeholder="Anexe aqui a foto"></td>
-                    <td><button type="button">Anexar</button></td>
-                </tr>
-                <tr>
-                    <td><label for="descricao">Descrição:</label></td>
-                    <td><input type="text" name="descricao" id="descricao" placeholder="Coloque aqui a descrição do novo produto"></td>
-                </tr>
-                <tr>
-                    <td><label for="preco">Preço:</label></td>
-                    <td><input type="text" name="preco" id="preco" placeholder="Valor em R$"></td>
-                </tr>
-                <tr>
-                    <td><label for="quantidade">Quantidade:</label></td>
-                    <td><input type="text" name="quantidade" id="quantidade" placeholder="Informe a quantidade"></td>
-                </tr>
-            </table>
-            <p><button type="submit">Enviar</button></p>
-        </form>
+<body>
+    <div class="cabecalho">
+        <a href="index.html">Página Inicial |</a> 
+        <a href="controle-de-estoque.html">Controle de Estoque |</a>
+        <a href="adicionar-produtos.html">Adicionar Novos Produtos |</a>
+        <a href="funcionarios.html">Funcionários</a>
     </div>
+        
+    <div class="foto-cabecalho">
+        <img src="Imagens/setup4.jpg" alt="setup gamer" width="888px">
+    </div>
+    <div>
+        <div class="corpo">
+        <div id="index-pagina">
+            <a href="index.html" id="index-pagina">Página Inicial /</a>Adicionar Produtos
+        </div>
+        <hr>
+        <div class="novo-produto">
+            <form action="#">
+                <h3>Adicionar Novo Produto</h3>
+                <table class="formulario">
+                    <tr>
+                        <td class="sem-borda"><label for="foto">Foto:</label></td>
+                        <td class="sem-borda"><input type="text" name="foto" id="foto" placeholder="Anexe aqui a foto"></td>
+                        <td class="sem-borda"><button type="button">Anexar</button></td>
+                    </tr>
+                    <tr>
+                        <td class="sem-borda"><label for="descricao">Descrição:</label></td>
+                        <td class="sem-borda"><input type="text" name="descricao" id="descricao" placeholder="Coloque aqui a descrição do novo produto"></td>
+                    </tr>
+                    <tr>
+                        <td class="sem-borda"><label for="preco">Preço:</label></td>
+                        <td class="sem-borda"><input type="text" name="preco" id="preco" placeholder="Valor em R$"></td>
+                    </tr>
+                    <tr>
+                        <td class="sem-borda"><label for="quantidade">Quantidade:</label></td>
+                        <td class="sem-borda"><input type="text" name="quantidade" id="quantidade" placeholder="Informe a quantidade"></td>
+                    </tr>
+                </table>
+                <p id=botao-enviar><button type="submit">Enviar</button></p>
+            </form>
+        </div>
+    </div>
+
+    <div class="rodape">
+        <a href="index.html">Página Inicial |</a> 
+        <a href="controle-de-estoque.html">Controle de Estoque |</a>
+        <a href="adicionar-produtos.html">Adicionar Novos Produtos |</a>
+        <a href="funcionarios.html">Funcionários</a>
+    </div>
+    
 </body>
 </html>
