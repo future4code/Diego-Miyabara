@@ -25,16 +25,12 @@ button:focus {
     color: white;
 }
 
-img {
-    width: 100px;
-}
-
 div>p:first-child {
     display: inline;
 }
 
-div img {
-    background: black;
+img {
+
 }
 
 .botao-amarelo {
@@ -58,6 +54,7 @@ div img {
 
 .icone {
     height: 15px;
+    width: 15px;
 }
 
 
