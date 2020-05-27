@@ -25,6 +25,10 @@ button:focus {
     color: white;
 }
 
+button:hover {
+    background-color: #fe7e02;
+}
+
 div>p:first-child {
     display: inline;
 }
@@ -45,6 +49,7 @@ img {
 .botao-amarelo:hover {
     background-color: #c44f00;
 }
+
 
 .container {
     height: 500px;
