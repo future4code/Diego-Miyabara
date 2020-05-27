@@ -20,11 +20,19 @@ h2 {
     text-align: center;
 }
 
-input {
+input[type="text"] {
     height: 20px;
     width: 500px;
     border: none;
     border-bottom: 2px solid black;
+    outline: none;
+}
+
+.icone:hover {
+    opacity: 50%;
+}
+.icone:active {
+    opacity: 100%
 }
 
 button:focus {
@@ -33,14 +41,11 @@ button:focus {
 
 button:hover {
     background-color: #fe7e02;
+    outline: none;
 }
 
 div>p:first-child {
     display: inline;
-}
-
-img {
-
 }
 
 .botao-amarelo {
@@ -50,6 +55,8 @@ img {
     border-radius: 5px;
     font-size: 20px;
     color: white;
+    border: none;
+    display: block;
 }
 
 .botao-amarelo:hover {
@@ -59,7 +66,6 @@ img {
 
 .container {
     height: 500px;
-    width: 100%;
     text-align: center;
 }
 
@@ -67,6 +73,13 @@ img {
     height: 15px;
     width: 15px;
 }
+
+a {
+    margin: 150px auto;
+    width: 250px;
+    text-decoration: none;
+}
+
 
 
 /** 
@@ -80,18 +93,23 @@ img {
     color: white;
 }
 
-#container-de-descricao>ol {
-    padding: 15px 0px;
+#container-de-descricao p {
+    padding: 15px 0;
+    width: 100%;
+}
+
+#container-de-descricao ol {
+    padding: 15px 0;
 }
 
 #container-para-comprar {
     background-color: #e7eb90;
 }
 
-#container-para-comprar>p {
+div#container-para-comprar p {
     color: #c44f00;
-    padding: 100px 0;
     font-size: 60px;
+
 }
 
 div a:nth-child(2) {
@@ -100,7 +118,23 @@ div a:nth-child(2) {
 
 #espaco-azul {
     padding-top: 100px;
+    width: 210px;
+    margin: 0px auto;
+
 }
+
+#espaco-azul h3 {
+    margin-left: -47px;
+    width: 300px;
+
+}
+
+#espaco-amarelo {
+    padding: 100px;
+    margin: 0 auto;
+    height: 300px;
+}
+
 
 /**
   *
