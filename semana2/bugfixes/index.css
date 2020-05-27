@@ -52,6 +52,7 @@ div img {
 
 .container {
     height: 500px;
+    width: 100%;
     text-align: center;
 }
 
@@ -89,6 +90,9 @@ div a:nth-child(2) {
     display: block;
 }
 
+#espaco-azul {
+    padding-top: 100px;
+}
 
 /**
   *
