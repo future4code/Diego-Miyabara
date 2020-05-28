@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 100%;
+    max-height: 100vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    color: #FFF;
+}
+
+#cabecalho {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 5vh;
+}
+
+#header {
+    width: 25%;
+    background-color: #2ECC40;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+#menu {
+    width: 75%;
+    background-color: #FFDC00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#content1 {
+    width: 100vw;
+    height: 60vh;
+    background-color: #F012BE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#content2 {
+    width: 50%;
+    height: 30vh;
+    background-color: #0074D9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#blank {
+    width: 25%;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#coluna {
+    width: 25%;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#image {
+    height: 50%;
+    background-color: #FF4136;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#extra {
+    height: 50%;
+    background-color: #01FF70;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#footer {
+    width: 100vw;
+    height: 5vh;
+    background-color: #B10DC9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
