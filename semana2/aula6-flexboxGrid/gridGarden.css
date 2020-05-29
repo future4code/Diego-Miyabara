@@ -1,0 +1,57 @@
+level 1 = grid-column-start: 3;
+
+level 2 = grid-column-start: 5;
+
+level 3 = grid-column-end: 4;
+
+level 4 = grid-column-end: 2;
+
+level 5 = grid-column-end: 5;
+
+level 6 = grid-column-start: -3;
+
+level 7 = grid-column-end: span 2;
+
+level 8 = grid-column-end: span 5;
+
+level 9 = grid-column-start: span 3; 
+
+level 10 = grid-column: 4/6;
+
+level 11 = grid-column: 2/span 3;
+
+level 12 = grid-row-start: 3;
+
+level 13 = grid-row: 3/6;
+
+level 14 = grid-column: 2;
+           grid-row: 5;
+
+level 15 = grid-column: 2/6;
+           grid-row: 1/6;
+
+level 16 = grid-area: 1/2/4/6;
+
+level 17 = grid-area: 2/3/5/6;
+
+level 18 = order: 1;
+
+level 19 = order: -1;
+
+level 20 = grid-template-columns: 50%;
+
+level 21 = grid-template-columns: repeat(8, 12.5%);
+
+level 22 = grid-template-columns: 100px 3em 40%;
+
+level 23 = grid-template-columns: 1fr 5fr;
+
+level 24 = grid-template-columns: 50px 1fr 1fr 1fr 50px;
+
+level 25 = grid-template-columns: 75px 3fr 2fr;
+
+level 26 = grid-template-rows: 50px 0 0 0 1fr;
+
+level 27 = grid-template: 60% 1fr/200px 1fr;
+
+level 28 = grid-template: 1fr 50px / 20% 1fr;
