@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: black;
+    width: 1440px;
+}
+
+p {
+    padding: 16px 8px;
+}
+
+hr {
+    color: #D2D2D2;
+}
+
+a:visited, a:link, a:hover {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.cabecalho {
+    background-color: #7745FF;
+    color: #FFF;
+    text-align: center;
+    margin-left: 10vw;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 1px solid white;
+    border-radius: 4px;
+}
+
+.foto-cabecalho {
+    max-width: 1247px;
+    margin-left: 10vw;
+}
+
+.corpo {
+    background-color: #D2D2D2;
+    border: -1px solid #FFF;
+    display: block;
+    margin-left: 10vw;
+    width: 1248px;
+    min-height: 550px;
+    height: auto;
+}
+
+.rodape {
+    background-color: #7745FF;
+    color: #FFF;
+    text-align: center;
+    margin-left: 10vw;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 1px solid white;
+    border-radius: 4px;
+}
+
+#index-pagina {
+    padding: 8px;
+    color: #7745FF;
+}
+
+#titulo {
+    margin-top: 8px;
+    text-align: center;
+}
+
+#texto-principal {
+    padding-left: 16px;
+}
+
+.formulario {
+    margin-top: 16px;
+    border: 1px solid #D2D2D2;
+    
+}
+
+input {
+    border-radius: 8px;
+    width: 500px;
+    padding: 3px;
+}
+
+td {
+    padding: 12px;
+    margin: 16px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+th {
+    margin: 12px;
+    padding: 16px;
+    border: 1px solid black;
+}
+
+
+button {
+    background-color: #7745FF;
+    color: #FFF;
+    border-radius: 6px;
+    padding: 4px 16px;
+    border: none;
+}
+
+#botao-enviar {
+    margin-left: 12px;
+    margin-top: 16px;
+}
+
+.titulo-pagina {
+    padding: 16px;
+    padding-left: 32px;
+    padding-bottom: 0px;
+}
+
+#tabela-de-estoque {
+    margin: 16px;
+    padding: 16px;
+    width: 98%;
+}
+
+#bug {
+    color: #D2D2D2;
+}
+
+#tabela-staff {
+    padding: 16px px;
+    margin: 16px;
+    text-align: center;
+    width: 97%;
+}
+
+.sem-borda {
+    border: none;
+}
+
+.form-vendas {
+    padding: 16px;
+    margin: 16px;
+    width: 97%;
+}
+
+#quantidade {
+    width: 80px;
+}
+
+#botao-vendas {
+    margin-left: 45%;
+    margin-top: 8px;
+}
+
+#tabela-historico {
+    padding: 16px px;
+    margin: 16px;
+    text-align: center;
+    width: 97%;
+}
+

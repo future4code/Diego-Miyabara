@@ -4,55 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de Estoque</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body background="imagens/background.jpg" widht=100%>
-    <div align="middle"><img src="imagens/logo-tgs.png" alt="logomarca"></div>
-    <h4>
-    <a href="index.html">Página Inicial |</a> 
-    <a href="controle-de-estoque.html">Controle de Estoque |</a>
-    <a href="adicionar-produtos.html">Adicionar Novos Produtos |</a>
-    <a href="funcionarios.html">Funcionários</a>
-    </h4>
-    <p>
-    <table>
-        <tr>
-            <th>Foto</th>
-            <th>Descrição</th>
-            <th>Preço</th>
-            <th>Quantidade disponível</th>
-        </tr>
+<body>    
+    <div class="cabecalho">
+        <a href="index.html">Página Inicial |</a> 
+        <a href="controle-de-estoque.html">Controle de Estoque |</a>
+        <a href="adicionar-produtos.html">Adicionar Novos Produtos |</a>
+        <a href="funcionarios.html">Funcionários |</a>
+        <a href="vendas.html">Vendas |</a>
+        <a href="historico.html">Histórico de Vendas</a>
+    </div>
         
-        <tr>
-            <td><img src="imagens/pc-gamer.jpg" alt="pc-gamer"></td>
-            <td>PC Gamer Intel 9ª geração I9-9900KF<br>RTX2080 SUPER 8GB<br>32gb de memória RAM<br>SSD de 960GB + 1 TB de HD</td>
-            <td align="center">R$ 12.179,90</td>
-            <td align="center">2 unidades </td>
-        </tr>
-        <tr>
-            <td><img src="imagens/monitor-alienware.jpg" alt="monitor-alienware"></td>
-            <td>Monitor Gamer Alienware 24.5" <br>Taxa de atualização: 240hz Full HD <br>Modelo: AW-2518HF<br>Tecnologia Free-sync</td>
-            <td align="center">R$ 2.519,99</td>
-            <td align="center">5 unidades</td>
-        </tr>
-        <tr>
-            <td><img src="imagens/teclado-hyperx.jpg" alt="teclado-hyperx"></td>
-            <td>Teclado Gamer Mecânico HyperX Alloy FPS<br>Marca: HyperX<br>Modelo:HX-KB1SS2-US<br>Iluminação:RGB</td>
-            <td align="center">R$ 519,90</td>
-            <td align="center">52 unidades</td>
-        </tr>
-        <tr>
-            <td><img src="imagens/mouse-hyperx.jpg" alt="mouse-hyperx"></td>
-            <td>Mouse Gamer HyperX Pulsefire FPS PRO RGB <br>Modelo: HX-MC003B <br>DPI: 16000</td>
-            <td align="center">R$ 279,99</td>
-            <td align="center"> 132 unidades</td>
-        </tr>
-        <tr>
-            <td><img src="imagens/headset-hyperx.jpg" alt="headset-hyperx"></td>
-            <td>Headset Sem Fio Gamer HyperX Cloud Flight<br>Modelo: HX-HSCF-BK/AM</td>
-            <td align="center">R$ 999,99</td>
-            <td align="center">37 unidades</td>
-        </tr>
-    </table>
-</p>
+    <div class="foto-cabecalho">
+        <img src="Imagens/setup4.jpg" alt="setup gamer" width="1247px">
+    </div>
+    <div>
+        <div class="corpo">
+            <div id="index-pagina">
+            <a href="index.html" id="index-pagina">Página Inicial /</a>Controle de Estoque
+            </div>
+            <hr>            
+            <div class="titulo-pagina">
+                <h3>Controle de Estoque</h3>
+            </div>
+            <table id=tabela-de-estoque>
+                <tr>
+                    <th>Imagem</th>
+                    <th>Descrição</th>
+                    <th>Preço</th>
+                    <th>Quantidade disponível</th>
+                </tr>
+                    
+                <tr>
+                    <td><img src="imagens/pc-gamer.jpg" alt="pc-gamer"></td>
+                    <td>PC Gamer Intel 9ª geração I9-9900KF<br>RTX2080 SUPER 8GB<br>32gb de memória RAM<br>SSD de 960GB + 1 TB de HD</td>
+                    <td align="center">R$ 12.179,90</td>
+                    <td align="center">2 unidades </td>
+                </tr>
+                <tr>
+                    <td><img src="imagens/monitor-alienware.jpg" alt="monitor-alienware"></td>
+                    <td>Monitor Gamer Alienware 24.5" <br>Taxa de atualização: 240hz Full HD <br>Modelo: AW-2518HF<br>Tecnologia Free-sync</td>
+                    <td align="center">R$ 2.519,99</td>
+                    <td align="center">5 unidades</td>
+                </tr>
+                <tr>
+                    <td><img src="imagens/teclado-hyperx.jpg" alt="teclado-hyperx"></td>
+                    <td>Teclado Gamer Mecânico HyperX Alloy FPS<br>Marca: HyperX<br>Modelo:HX-KB1SS2-US<br>Iluminação:RGB</td>
+                    <td align="center">R$ 519,90</td>
+                    <td align="center">52 unidades</td>
+                </tr>
+                <tr>
+                    <td><img src="imagens/mouse-hyperx.jpg" alt="mouse-hyperx"></td>
+                    <td>Mouse Gamer HyperX Pulsefire FPS PRO RGB <br>Modelo: HX-MC003B <br>DPI: 16000</td>
+                    <td align="center">R$ 279,99</td>
+                    <td align="center"> 132 unidades</td>
+                </tr>
+                <tr>
+                    <td><img src="imagens/headset-hyperx.jpg" alt="headset-hyperx"></td>
+                    <td>Headset Sem Fio Gamer HyperX Cloud Flight<br>Modelo: HX-HSCF-BK/AM</td>
+                    <td align="center">R$ 999,99</td>
+                    <td align="center">37 unidades</td>
+                </tr>
+            </table>  
+            <p id=bug> _</p>          
+    </div>
+    <div class="rodape">
+        <a href="index.html">Página Inicial |</a> 
+        <a href="controle-de-estoque.html">Controle de Estoque |</a>
+        <a href="adicionar-produtos.html">Adicionar Novos Produtos |</a>
+        <a href="funcionarios.html">Funcionários</a>
+    </div>
+    
 </body>
 </html>
