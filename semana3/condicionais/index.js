@@ -171,3 +171,41 @@
 
 // b)
 
+
+let primeiraPergunta = prompt("Responda com sim ou não: O animal possui ossos?")
+if (primeiraPergunta === "não") {
+    console.log("É invertebrados")
+}   
+    else if (primeiraPergunta = "sim"){
+        let segundaPergunta = prompt("Possuem pelos?")
+        if (segundaPergunta === "sim"){
+            let terceiraPergunta = prompt("São racionais?")
+            if (terceiraPergunta === "sim"){
+                console.log("É humano")
+            } 
+                else if (terceiraPergunta === "não"){
+                console.log("É um mamífero não humano.")
+            }
+        } 
+            else if (segundaPergunta === "não"){
+            let quartaPergunta = prompt("Possuem penas?")
+            if (quartaPergunta === "sim"){
+                console.log("É uma ave!")
+            } 
+                else if (quartaPergunta === "não") {
+                let quintaPergunta = prompt("São terrestres?")
+                if (quintaPergunta === "não"){
+                console.log("É um peixe!")
+            } 
+                else if (quintaPergunta === "sim"){
+                    let sextaPergunta = prompt ("Vivem parte da vida na terra e parte na água?")
+                    if (sextaPergunta === "sim"){
+                        console.log("É um anfíbio!")
+                    } 
+                        else if (sextaPergunta === "não"){
+                        console.log("É um réptil!")
+                    }
+                }
+            }
+        }
+    }
