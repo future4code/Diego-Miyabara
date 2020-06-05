@@ -12,27 +12,27 @@
  */
 
  
-console.log("Bem vindo ao jogo de Blackjack!")
+// console.log("Bem vindo ao jogo de Blackjack!")
 
-if(confirm("Quer iniciar uma nova rodada?")) {
-  const primeiraCarta = comprarCarta();
-  const segundaCarta = comprarCarta();
-  const terceiraCarta = comprarCarta();
-  const quartaCarta = comprarCarta();
-  let somaUsuário = primeiraCarta.valor + segundaCarta.valor
-  let somaComputador = terceiraCarta.valor + quartaCarta.valor
-  console.log(`Usuário - cartas: ${primeiraCarta.texto} + ${segundaCarta.texto} - pontuação ` + somaUsuário)
-  console.log(`Computador - cartas: ${terceiraCarta.texto} + ${quartaCarta.texto} - pontuação ` + somaComputador)
+// if(confirm("Quer iniciar uma nova rodada?")) {
+//   const primeiraCarta = comprarCarta();
+//   const segundaCarta = comprarCarta();
+//   const terceiraCarta = comprarCarta();
+//   const quartaCarta = comprarCarta();
+//   let somaUsuário = primeiraCarta.valor + segundaCarta.valor
+//   let somaComputador = terceiraCarta.valor + quartaCarta.valor
+//   console.log(`Usuário - cartas: ${primeiraCarta.texto} + ${segundaCarta.texto} - pontuação ` + somaUsuário)
+//   console.log(`Computador - cartas: ${terceiraCarta.texto} + ${quartaCarta.texto} - pontuação ` + somaComputador)
   
-  if(somaUsuário === somaComputador){
-     console.log("Empate!")
-  } else if (somaUsuário > somaComputador && somaUsuário<=21){
-     console.log("O usuário ganhou!")
-  } else if (somaUsuário < somaComputador && somaComputador<=21){
-     console.log("O computador ganhou!")
-  }
+//   if(somaUsuário === somaComputador){
+//      console.log("Empate!")
+//   } else if (somaUsuário > somaComputador && somaUsuário<=21){
+//      console.log("O usuário ganhou!")
+//   } else if (somaUsuário < somaComputador && somaComputador<=21){
+//      console.log("O computador ganhou!")
+//   }
 
    
-} else {
-   console.log("O jogo acabou.")
-}
+// } else {
+//    console.log("O jogo acabou.")
+// }
