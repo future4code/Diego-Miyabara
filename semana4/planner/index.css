@@ -1,0 +1,114 @@
+body {
+    background-color: rgba(249, 249, 250, 0.603);
+    font-family: fantasy, sans-serif;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+span {
+    margin-left: 16px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.adicionar-tarefa {
+    margin-bottom: 16px;
+}
+
+#input-tarefa {
+    width: 50vw;
+    border-radius: 4px;
+    margin-left: 16px;
+}
+
+form {
+    display: inline;
+    font-family: fantasy, sans-serif;
+    margin-left: 16px;
+}
+
+.semana {
+    width: 100%;
+    margin-right: 4px;
+}
+
+#segunda-feira {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+#terca-feira {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+#quarta-feira {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+#quinta-feira {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+#sexta-feira {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+#sabado {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+#domingo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+.dia-semana {
+    width: 100%;
+    justify-content: center;
+}
+
+ul {
+    margin: 8px 0;
+    padding-bottom: ;
+}
+
+#botao-tarefa {
+    font-family: sans-serif;
+    background-color: darkgrey;
+    color: #FFF;
+    border: 1px solid grey;
+    border-radius: 4px;
+    margin-left: 16px;
+}
