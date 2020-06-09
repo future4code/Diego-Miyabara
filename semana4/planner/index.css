@@ -22,7 +22,7 @@ span {
 }
 
 #input-tarefa {
-    width: 50vw;
+    width: 40vw;
     border-radius: 4px;
     margin-left: 16px;
 }
@@ -105,7 +105,14 @@ ul {
 }
 
 #botao-tarefa {
-    font-family: sans-serif;
+    background-color: darkgrey;
+    color: #FFF;
+    border: 1px solid grey;
+    border-radius: 4px;
+    margin-left: 16px;
+}
+
+#botao-limpar {
     background-color: darkgrey;
     color: #FFF;
     border: 1px solid grey;
