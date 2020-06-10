@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="index.css">
+    <title>Planner</title>
+</head>
+<body>
+    <h1>MINHA SEMANA</h1>
+    <div class="adicionar-tarefa">
+        <span>Nova Tarefa: </span> 
+        <input type="text" value="" id="input-tarefa">
+        <span>Dia da Semana: </span>
+        <form action="post" title="Dia da Semana">
+            <select name="select" id="select">
+                <option value="segunda-feira">Segunda-Feira</option>
+                <option value="terca-feira">Terça-Feira</option>
+                <option value="quarta-feira">Quarta-Feira</option>
+                <option value="quinta-feira">Quinta-Feira</option>
+                <option value="sexta-feira">Sexta-Feira</option>
+                <option value="sabado">Sábado</option>
+                <option value="domingo">Domingo</option>
+            </select>
+        </form>
+        <form action="post">
+            <select name="select-hora" id="select-hora">
+                <option value="08-09">Das 8:00 às 9:00</option>
+                <option value="09-10">Das 9:00 às 10:00</option>
+                <option value="10-11">Das 10:00 às 11:00</option>
+                <option value="11-12">Das 11:00 às 12:00</option>
+                <option value="14-15">Das 14:00 às 15:00</option>
+                <option value="15-16">Das 15:00 às 16:00</option>
+                <option value="16-17">Das 16:00 às 17:00</option>
+                <option value="17-18">Das 17:00 às 18:00</option>
+                <option value="O dia todo">O dia todo</option>
+            </select>
+        </form>
+        <button id="botao-tarefa" onclick="enviarTarefa()">Enviar tarefa</button>
+        <button id="botao-limpar" onclick="limparAgenda()">Limpar Agenda</button>
+    </div>
+    <div class="container">
+
+        <div class="semana">
+            <div class="dia-semana">
+                <div id="segunda-feira">Segunda-Feira</div>
+                <ul id=tarefa-segunda onclick="riscar()"></ul>
+            </div>
+        </div>
+
+        <div class="semana">
+            <div class="dia-semana">
+                <div id="terca-feira">Terça-Feira</div>
+                <ul id=tarefa-terca></ul>
+            </div>
+        </div>
+        
+        <div class="semana">
+            <div class="dia-semana">
+                <div id="quarta-feira">Quarta-Feira</div>
+                <ul id=tarefa-quarta></ul>
+            </div>
+        </div>
+        <div class="semana">
+            <div class="dia-semana">
+                <div id="quinta-feira">Quinta-Feira</div>
+                <ul id=tarefa-quinta></ul>
+            </div>
+        </div>
+        <div class="semana">
+            <div class="dia-semana">
+                <div id="sexta-feira">Sexta-Feira</div>
+                <ul id=tarefa-sexta></ul>
+            </div>
+        </div>
+        <div class="semana">
+            <div class="dia-semana">
+                <div id="sabado">Sábado</div>
+                <ul id=tarefa-sabado></ul>
+            </div>
+        </div>
+        <div class="semana">
+            <div class="dia-semana">
+                <div id="domingo">Domingo</div>
+                <ul id=tarefa-domingo></ul>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
