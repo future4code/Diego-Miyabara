@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Blog da Turing!</h1>
+    </header>
+
+    <main>
+        <table>
+                <tr>
+                    <td><div>Titulo</div></td> 
+                    <td><input type="text" placeholder="Digite aqui o Título" id="titulo-post"></td>
+                </tr>  
+                <tr>
+                    <td><div>Autor</div></td> 
+                    <td><input type="text" placeholder="Digite o nome do Autor" id="autor-post"></td>
+                </tr>           
+                <tr>
+                    <td><div>Conteúdo</div></td>
+                    <td><textarea name="conteudo" id="conteudo-post" cols="30" rows="5" placeholder="Digite aqui o conteúdo do seu post!" ></textarea></td>
+                    <td><button id="botao-post" onclick="postar()">Postar!</button></td>
+                </tr>
+        </table>
+        
+        <div id="recebe-post">
+            
+        </div>
+    </main>
+
+    <footer>
+        <h3>Copyright© 2020 DM Development</h3>
+    </footer>
+</body>
+</html>
