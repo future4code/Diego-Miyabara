@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="index.css">
+    <title>Controlador de Despesas</title>
+</head>
+<body>
+    <header></header>
+    <main>
+        <section>
+            <h1>Controlador de Despesas</h1>
+            <h3>Cadastrar Despesa</h3>
+            <div>
+                <label label for="valor">Valor: </label> 
+                <input type="text" id="campo-valor">
+            </div>
+            <div>
+                <label for="tipo">Tipo de Despesa: </label> 
+                <select id="campo-tipo">
+                    <option value=""></option>
+                    <option value="casa">Casa</option>
+                    <option value="comida">Comida</option>
+                    <option value="viagem">Viagem</option>
+                    <option value="roupa">Roupa</option>
+                    <option value="supérfluos">Supérfluos</option>
+                </select>
+            </div>
+            <div>
+                <label for="descricao">Descrição:</label>
+                <input type="text" id="campo-descricao">
+            </div>
+            <button id="botao-cadastrar" onclick="cadastrarDespesa()">Cadastrar Despesa</button>
+            <div id="resultado-cadastro"></div>
+        </section>
+        <section>
+            <h1>Despesas Detalhadas</h1>
+            <div>
+                <label for="tipo">Tipo de Despesa: </label> 
+                <select id="campo-tipo">
+                    <option value=""></option>
+                    <option value="casa">Casa</option>
+                    <option value="comida">Comida</option>
+                    <option value="viagem">Viagem</option>
+                    <option value="roupa">Roupa</option>
+                    <option value="supérfluos">Supérfluos</option>
+                </select>
+            </div>
+            <div>
+                <label label for="valor">Valor Mínimo: </label> 
+                <input type="text" id="campo-valor-minimo">
+            </div>
+            <div>
+                <label label for="valor">Valor Máximo: </label> 
+                <input type="text" id="campo-valor-maximo">
+            </div>
+            <button id="botao-filtrar" onclick="fitrarDespesa()">Filtrar</button>
+            <button id="botao-limpar-filtro" onclick="limparFitro()">Limpar Filtros</button>
+            <div id="resultado-filtro"></div>
+        </section>
+        <section>
+            <h1>Extrato</h1>
+            <h3>Valor Total: <div id="recebe-extrato"></div></h3>
+            <button id="gerar-extrato" onclick="gerarExtrato()">Gerar Extrato</button>
+        </section>
+    </main>
+    <footer></footer>
+</body>
+</html>
