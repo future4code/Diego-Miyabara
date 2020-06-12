@@ -11,3 +11,9 @@
 //com a mensagem TIPO DE INVESTIMENTO INFORMADO INCORRETO! Caso esteja correto ele fará o cálculo e retornará o valorAposInvestimento. Fora da função, os exemplos foram Ações com 
 //o tipo e o valor 150 neste caso seria 150*1.1=165(valorAposInvestimento). O primeiro exemplo foi chamado de novoMontante e o segundo de segundoMontante. Após o cálculo deles
 //é executado um console.log com o valor calculado destes exemplos.
+
+//Exercício 3 -
+//Foram criados 3 arrays, um com todos os números(numeros), um para receber os numeros pares (array1) e outra para receber os números ímpares (array2). Foi criado um for of
+// onde ele criou um parametro numero para verificar dentro do array numeros e criou uma condicional if caso o resto do numero dividido por 2 seja zero, ou seja, caso ele seja par,
+// ele vai adicionar o numero na array1, e um else para caso não tenha resto 0, ele seja adicionado na array2. No final ele imprimiu a mensagem: Quantidade de números: a quantidade 
+// de índex da array numeros, um segundo console.log com a quantidade de índex dos números pares e outro com a quantidade de index de numeros ímpares.
