@@ -52,3 +52,14 @@
 //  = true
 //e) false && false || (true && true && true)
 //  = true
+
+//Exercício 3 - 
+//O código não funciona pois entrava num loop infinito pois sempre o numero será maior que 0 pois não tinha incremento, além disso como seu código estava com i<=N, o 5 estava incluso
+//então o 10 acabava sendo impresso. Fiz a correção abaixo alterando o <= para <, e adicionei no while o i++ para que não fique no loop infinito.
+
+// const quantidadeDeNumerosPares = 5
+// let i = 0
+// while(i < quantidadeDeNumerosPares) {
+//   console.log(i*2)
+//   i++
+// }
