@@ -105,3 +105,45 @@
 //     }
 // }
 // verificaMaior(16, 4)
+
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+//Exerícios de funções
+
+//Exercício 1
+// function imprimeNumero () {
+//     let numeros = [1, 6, 15, 66, 35, 44, 27, 11, 17]
+//     let maiorNumero = 0
+//     let menorNumero = Infinity
+//     let segundoMaior = 0
+//     let segundoMenor = Infinity
+
+//     for (let i = 0; i < numeros.length; i++){
+//         if (numeros[i] > maiorNumero){
+//             maiorNumero = numeros[i]
+//         }
+//         if ((numeros[i] > segundoMaior) && (numeros[i]<maiorNumero)){
+//             segundoMaior = numeros[i]
+//         }
+//     }
+
+//     for (let i=0; i < numeros.length; i++){
+//         if (numeros[i] < menorNumero) {
+//             menorNumero = numeros[i]
+//         }
+//         if ((numeros[i] < segundoMenor) && (numeros[i]>menorNumero)){
+//             segundoMenor = numeros[i]
+//         }
+//     }
+//     console.log(`O segundo maior número é: ${segundoMaior}`)
+//     console.log(`O segundo menor número é: ${segundoMenor}`)
+// }
+
+// imprimeNumero()
+
+//Exercício 2
+
+// let alerta = function(){
+//     return alert("Hello Labenu!")
+// }
+
+// alerta()
