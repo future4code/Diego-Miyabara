@@ -63,3 +63,17 @@
 //   console.log(i*2)
 //   i++
 // }
+
+// Exercício 4 -
+
+// function verificaTriangulo (lado1, lado2, lado3){
+//     if((lado1 === lado2) && (lado2 === lado3) && (lado1 === lado3)){
+//         return console.log("É equilárero!")
+//     } else if ((lado1 !== lado2) && (lado2 !== lado3) && (lado1 !== lado3)){
+//         return console.log("É escaleno!")
+//     } else {
+//         return console.log("É isóceles!")
+//     }
+// }
+
+// verificaTriangulo(3,3,3)
