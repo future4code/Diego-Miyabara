@@ -77,3 +77,31 @@
 // }
 
 // verificaTriangulo(3,3,3)
+
+//Exercício 5 -
+
+// function verificaMaior (a, b){
+//     if (a > b){
+//          console.log("O maior é: ", a)
+//     } else if (b > a){
+//          console.log("O maior é: ", a)
+//     } else {
+//          console.log("São iguais")
+//     }
+//     if (a % b === 0){
+//          console.log(`${a} é divisível por ${b}`)
+//     } else {
+//         console.log(`${a} não é divisível por ${b}`)
+//     }
+//     if (b% a === 0){
+//          console.log(`${b} é divisível por ${a}`)
+//     } else {
+//         console.log(`${b} não é divisível por ${a}`)
+//     }
+//     if ((a-b) > 0){
+//         console.log(`A diferença entre eles é ${a-b}`)
+//     }else if ((b-a) > 0){
+//         console.log(`A diferença entre eles é ${b-a}`)
+//     }
+// }
+// verificaMaior(16, 4)
