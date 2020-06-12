@@ -36,3 +36,19 @@
 //         console.log(numero)
 //     }
 // }
+
+//Exercício 2 -
+//booleano1 = true
+//booleano2 = false
+//booleano3 = !booleano2 = true
+//booleano4 = !booleano3 = false
+//a) true && false && true 
+//  = false
+//b) (true && false) || false 
+//  = false
+//c) (false || true) && (false || true)
+//  = true
+//d) !(false && true) || !(true && true)
+//  = true
+//e) false && false || (true && true && true)
+//  = true
