@@ -23,3 +23,16 @@
 //se o valor da array numeros é menor que infinito no caso numero1, caso sim o valor da array passará a ser o numero1, a outra condicional é para verificar se o valor da array
 // é maior que zero, ou seja se ele é positivo, caso seja ele irá definir o numero2 com o valor da array.
 //Os consoles.log irão imprimir os resultados do numero1 ou seja, todos os numeros da array original. e o segundo console.log irá imprimir somente os numeros positivos.
+
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+//Exercícios de Lógica de Programação
+
+//Exercício 1 -
+// Uma lista é considerado um array, para percorrer esta lista podemos utilizar o for, for of, for in, e também forEach, map e filter.
+
+// let array = [1, 2, 3, 5, 8, 13, 21, 34, 55]
+// for (let numero of array){
+//     if (numero > 0) {
+//         console.log(numero)
+//     }
+// }
