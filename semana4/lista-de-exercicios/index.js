@@ -17,3 +17,9 @@
 // onde ele criou um parametro numero para verificar dentro do array numeros e criou uma condicional if caso o resto do numero dividido por 2 seja zero, ou seja, caso ele seja par,
 // ele vai adicionar o numero na array1, e um else para caso não tenha resto 0, ele seja adicionado na array2. No final ele imprimiu a mensagem: Quantidade de números: a quantidade 
 // de índex da array numeros, um segundo console.log com a quantidade de índex dos números pares e outro com a quantidade de index de numeros ímpares.
+
+//Exercicio 4 -
+//Foi criado uma constante de array numeros com vários valores, foi definido que numero1 é infinito e numero2 é 0. Foi criado um for of com duas condicionais if para verificar
+//se o valor da array numeros é menor que infinito no caso numero1, caso sim o valor da array passará a ser o numero1, a outra condicional é para verificar se o valor da array
+// é maior que zero, ou seja se ele é positivo, caso seja ele irá definir o numero2 com o valor da array.
+//Os consoles.log irão imprimir os resultados do numero1 ou seja, todos os numeros da array original. e o segundo console.log irá imprimir somente os numeros positivos.
