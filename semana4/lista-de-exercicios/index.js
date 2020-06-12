@@ -166,3 +166,14 @@
 // console.log(retangulo)
 // }
 // criaRetangulo(4, 6)
+
+//Exercicio 3 -
+// const filmeFavorito = {
+//     título: "Truque de Mestre",
+//     ano: 2013,
+//     diretor: "Louis Leterrier",
+//     atores:["Mark Ruffalo", " Morgan Freeman", " Jesse Eisenberg", " Dave Franco", " Woody Harrelson", " Isla Fisher"]
+// }
+
+// console.log(`Venha assistir ao filme ${filmeFavorito.título}, de ${filmeFavorito.ano}, dirigido por ${filmeFavorito.diretor} e estrelado pelos atores: ${filmeFavorito.atores}.`)
+
