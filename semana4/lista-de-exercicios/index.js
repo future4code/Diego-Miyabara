@@ -203,25 +203,58 @@
 //Exercícios de Funções de array
 //Exercício 1
 //a)
-const pessoas = [
-	{ nome: "Pedro", idade: 20 },
-	{ nome: "João", idade: 10 },
-	{ nome: "Paula", idade: 12 },
-	{ nome: "Artur", idade: 89 } 
-]
+// const pessoas = [
+// 	{ nome: "Pedro", idade: 20 },
+// 	{ nome: "João", idade: 10 },
+// 	{ nome: "Paula", idade: 12 },
+// 	{ nome: "Artur", idade: 89 } 
+// ]
 
-const maioresDeIdade = pessoas.filter((maioridade, index, array) => {
-    if(maioridade.idade >= 20){
-        return true
+// const maioresDeIdade = pessoas.filter((maioridade, index, array) => {
+//     if(maioridade.idade >= 20){
+//         return true
+//     }
+// })
+// console.log(maioresDeIdade)
+
+// //b) 
+
+// const menorDeIdade = pessoas.filter((menoridade, index, array) => {
+//     if(menoridade.idade < 20){
+//         return true
+//     }
+// })
+// console.log(menorDeIdade)
+
+//Exercício 2
+//a)
+const array = [1, 2, 3, 4, 5, 6]
+
+// function dobrar() {
+//     for (let i = 0; i<array.length; i++){
+//         array[i] *= 2 
+//     }   
+// }
+// // dobrar()
+// // console.log(array)
+
+//b)
+// function triplicar() {
+//     for (let i = 0; i<array.length; i++){
+//         array[i] *= 3 
+//         array[i] = `${array[i]}`
+//     }   
+// }
+// triplicar()
+// console.log(array)
+
+//c)
+function verificaPar() {
+    for (let i = 0; i < array.length; i++){
+        if(array[i] % 2 === 0){
+            return `${array[i]} é par!`
+        } else return `${array[i]} é ímpar!`
     }
-})
-console.log(maioresDeIdade)
-
-//b) 
-
-const menorDeIdade = pessoas.filter((menoridade, index, array) => {
-    if(menoridade.idade < 20){
-        return true
-    }
-})
-console.log(menorDeIdade)
+}
+verificaPar()
+console.log(array)
