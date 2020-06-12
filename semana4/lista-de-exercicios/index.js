@@ -177,3 +177,51 @@
 
 // console.log(`Venha assistir ao filme ${filmeFavorito.título}, de ${filmeFavorito.ano}, dirigido por ${filmeFavorito.diretor} e estrelado pelos atores: ${filmeFavorito.atores}.`)
 
+//Exercício 4 -
+// const individuo = {
+//     nome: "Diego",
+//     idade: 29,
+//     email: "adealeatorio@gmail.com",
+//     endereco: "Rua dos Manicacas, 1013"
+// }
+
+// const individuoAnonimo = {}
+
+// const arrayIndividuos = [individuo, individuoAnonimo]
+
+// function anonimizarPessoa(){
+//     individuoAnonimo.nome = "Anônimo"
+//     individuoAnonimo.idade = individuo.idade
+//     individuoAnonimo.email = individuo.email
+//     individuoAnonimo.endereco = individuo.email
+// }
+
+// anonimizarPessoa()
+// console.log(arrayIndividuos)
+
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+//Exercícios de Funções de array
+//Exercício 1
+//a)
+const pessoas = [
+	{ nome: "Pedro", idade: 20 },
+	{ nome: "João", idade: 10 },
+	{ nome: "Paula", idade: 12 },
+	{ nome: "Artur", idade: 89 } 
+]
+
+const maioresDeIdade = pessoas.filter((maioridade, index, array) => {
+    if(maioridade.idade >= 20){
+        return true
+    }
+})
+console.log(maioresDeIdade)
+
+//b) 
+
+const menorDeIdade = pessoas.filter((menoridade, index, array) => {
+    if(menoridade.idade < 20){
+        return true
+    }
+})
+console.log(menorDeIdade)
