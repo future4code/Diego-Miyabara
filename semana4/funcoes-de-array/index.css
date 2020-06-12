@@ -1,0 +1,14 @@
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+section {
+ width: 25%;
+ border: 1px solid black;
+}
+
+button {
+    margin-top: 10px;
+}
