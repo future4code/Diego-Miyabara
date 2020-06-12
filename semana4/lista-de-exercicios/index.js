@@ -147,3 +147,22 @@
 // }
 
 // alerta()
+
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+//Exercício de Objetos
+//Exercício 1- Explique com as suas palavras o que são e quando podemos/devemos utilizar arrays e objetos.
+//Resposta: Array é conjuntos de informações podendo ser números, strings, objetos, objetos são essas informações que contém mais que uma propriedade. Usamos arrays para concatenar
+//vários valores sejam eles Numbers, Strings ou Objetos mesmo, já o objeto é quando esse valores possuem mais que uma propriedade, exemplo se sua array chama de pessoas, e pessoa tem
+//nume, idade, endereço como propriedade. Sua array é pessoas e seu objeto é pessoa.
+
+//Exercício 2 - 
+// function criaRetangulo (lado1, lado2){
+//     const retangulo = {
+//         largura: lado1,
+//         altura: lado2,
+//         perimetro: (2*(lado1 + lado2)),
+//         area: lado1 * lado2
+//     }    
+// console.log(retangulo)
+// }
+// criaRetangulo(4, 6)
