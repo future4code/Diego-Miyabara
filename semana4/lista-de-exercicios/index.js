@@ -249,12 +249,15 @@ const array = [1, 2, 3, 4, 5, 6]
 // console.log(array)
 
 //c)
-function verificaPar() {
-    for (let i = 0; i < array.length; i++){
-        if(array[i] % 2 === 0){
-            return `${array[i]} é par!`
-        } else return `${array[i]} é ímpar!`
-    }
-}
-verificaPar()
-console.log(array)
+
+// function verificaPar() {
+//     for (let i = 0; i < array.length; i++){
+//         if(array[i] % 2 === 0){
+//             array[i] = `${array[i]} é par!`
+//         } else  {
+//             array[i] = `${array[i]} é ímpar!`
+//         }
+//     }
+// }
+// verificaPar()
+// console.log(array)
