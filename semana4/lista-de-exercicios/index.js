@@ -288,3 +288,55 @@
 // })
 
 // console.log(naoPermitidos)
+
+//Exercício 4
+// const consultas = [
+// 	{ nome: "João", genero: "masculino", cancelada: true, dataDaConsulta: "01/10/2019" },
+// 	{ nome: "Pedro", genero: "masculino", cancelada: false, dataDaConsulta: "02/10/2019" },
+// 	{ nome: "Paula", genero: "feminino", cancelada: true, dataDaConsulta: "03/11/2019" },
+// 	{ nome: "Márcia", genero: "feminino", cancelada: false, dataDaConsulta: "04/11/2019" }
+// ]
+
+// const cancelados = consultas.filter((cancelado, index, array) => {
+//     if(cancelado.cancelada === true){
+//         return true
+//     }
+// })
+
+// const naoCancelados = consultas.filter ((cancelado, index, array) => {
+//     if(cancelado.cancelada === false){
+//         return true
+//     }
+// })
+
+// let chamada = ""
+// let lembrete = ""    
+// const emailCancelados = cancelados.map ((email, index, array) => {
+//     if (email.genero === "masculino"){
+//         chamada = "Sr"
+//         lembrete = `lembrá-lo`       
+//     } else {
+//         chamada = `Sra.`
+//         lembrete = `lembrá-la`
+//     }
+//     return `Olá, ${chamada} ${email.nome}. Infelizmente, sua consulta marcada para o dia ${email.dataDaConsulta} foi cancelada. Se quiser, pode entrar em 
+//     contato conosco para remarcá-la`
+// })
+
+// const emailNaoCancelados = naoCancelados.map ((email, index, array) => {
+//     if (email.genero === "masculino"){
+//         chamada = "Sr"
+//         lembrete = `lembrá-lo`       
+//     } else {
+//         chamada = `Sra.`
+//         lembrete = `lembrá-la`
+//     }
+
+//     return `Olá, ${chamada} ${email.nome}. Estamos enviando esta mensagem para ${lembrete} da sua consulta no dia ${email.dataDaConsulta}. Por favor, acuse
+//     o recebimento deste e-mail.`
+// })
+
+// // console.log(cancelados)
+// // console.log(naoCancelados)
+// console.log(emailCancelados)
+// console.log(emailNaoCancelados)
