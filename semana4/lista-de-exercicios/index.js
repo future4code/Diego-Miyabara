@@ -340,3 +340,29 @@
 // // console.log(naoCancelados)
 // console.log(emailCancelados)
 // console.log(emailNaoCancelados)
+
+//Exercício 5
+const contas = [
+	{ cliente: "João", saldoTotal: 1000, compras: [100, 200, 300] },
+	{ cliente: "Paula", saldoTotal: 7500, compras: [200, 1040] },
+	{ cliente: "Pedro", saldoTotal: 10000, compras: [5140, 6100, 100, 2000] },
+	{ cliente: "Luciano", saldoTotal: 100, compras: [100, 200, 1700] },
+	{ cliente: "Artur", saldoTotal: 1800, compras: [200, 300] },
+	{ cliente: "Soter", saldoTotal: 1200, compras: [] }
+]
+
+
+let atualizaSaldo = (novoSaldo) => {
+	let saldoTotal = 0
+	novoSaldo.forEach((atualizacao, index, array) => {
+		for (let i of atualizacao.compras) {
+			saldoTotal += i
+		}
+		atualizacao.saldoTotal = atualizacao.saldoTotal - saldoTotal
+
+		saldoTotal = 0
+	})
+	return novoSaldo
+}
+
+console.log(atualizaSaldo(contas))
