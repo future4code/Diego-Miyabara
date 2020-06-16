@@ -16,6 +16,7 @@ function App() {
               <input type="text" placeholder="Busca" id="campoDeBusca" />
               <button><img src={lupa} width="3%" id="imagem-lupa" /></button>
             </div>
+            <div id="container-login"></div>
         </header>
 
         <main>
