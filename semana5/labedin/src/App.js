@@ -52,9 +52,7 @@ function App() {
           <CardQuadrado imagem="https://www.fluentu.com/blog/english-por-br/wp-content/uploads/sites/35/2015/09/english-for-travelers.jpg" valor="Viajar o mundo!"/>
           <CardQuadrado imagem="https://heypeppers.com.br/blog/wp-content/uploads/2016/09/IMG_9640-788x525.jpg" valor="Conhecer culturas!" />
           <CardQuadrado imagem="https://infofeiras.com.br/wp-content/uploads/2018/04/shutterstock_556759903.jpg" valor="Curtir os amigos!"/>
-        </div>
-        
-
+        </div>   
       </div>
 
       <div className="page-section-container">
