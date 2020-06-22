@@ -23,7 +23,7 @@ class App extends React.Component {
   proximaEtapa = () => {
     this.setState({etapa: this.state.etapa + 1})
   }
-
+  
   render() {
     return (
       <div className="App">
