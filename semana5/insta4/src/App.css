@@ -1,3 +1,7 @@
+body {
+  background-color: #FAFAFA;
+}
+
 .app-container {
   display: flex;
   justify-content: center;
