@@ -97,9 +97,10 @@ class App extends React.Component {
       }
     )
     .then(response => {
+      alert("Usuário criado com sucesso!");
+      this.setState({inputNomeUsuario: ""});
+      this.setState({inputEmailUsuario: ""});  
       this.buscarUsuario()
-      this.setState({inputNomeUsuario: '', inputEmailUsuario: ''})
-      alert("Usuário criado com sucesso!")
     }) .catch(error => {
       alert("Não foi possível cadastrar o usuário!")
       console.log(error.data)
@@ -107,7 +108,16 @@ class App extends React.Component {
   }
 
   deletarUsuario = (userId) => {
-    axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${userId}`)
+    axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${userId}`, {
+      headers: {
+        Authorization:'diego-miyabara-turing'
+      }
+    }).then((response) => {
+      this.buscarUsuario()
+      alert("Deseja mesmo excluir este usuário?")
+    }).catch((error) => {
+      console.log(error.data)
+    })
   }
 
   onChangeInputNome = event => {
@@ -127,7 +137,7 @@ class App extends React.Component {
           <ContainerDados>
             <ContainerInput>
               <label>Nome: </label>
-              <input placeholder="Insira seu nome" onChange={this.onChangeInputNome}/>
+              <input placeholder="Insira seu nome" onChange={this.onChangeInputNome} />
             </ContainerInput>
             <ContainerInput> 
               <label>E-mail: </label>
@@ -140,12 +150,12 @@ class App extends React.Component {
       } else{
         return (
           <div>
-            <button onClick={this.clickRenderizacao}>Ir para a página de lista</button>
+            <button onClick={this.clickRenderizacao}>Voltar</button>
             <ContainerUsuarios>
               <h3>Usuários Cadastrados</h3>
               <ContainerNomes>
                 {this.state.usuarios.map(usuario => {
-                  return <Usuario>{usuario.name} <button>x</button></Usuario>;
+                  return <Usuario key={usuario.id}>{usuario.name} <button onClick={() => this.deletarUsuario(usuario.id)}>x</button></Usuario>;
                 })}
               </ContainerNomes>
             </ContainerUsuarios>  
