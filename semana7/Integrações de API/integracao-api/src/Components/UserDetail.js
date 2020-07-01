@@ -133,7 +133,7 @@ class UserDetail extends React.Component {
                             <Usuario key={usuario.id}>
                                 <BotaoUser onClick={this.renderizarDetalhe}>{usuario.name}</BotaoUser> 
                                 <BotaoExcluir onClick={() => this.deletarUsuario(usuario.id)}>x</BotaoExcluir>
-                                {() => this.buscarUsuario(usuario.id)}
+                                {detalheUsuario()}
                             </Usuario>)
                         })}
                     </ContainerNomes>
