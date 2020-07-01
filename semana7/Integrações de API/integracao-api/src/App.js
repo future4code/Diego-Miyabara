@@ -97,9 +97,9 @@ class App extends React.Component {
       }
     )
     .then(response => {
-      alert("Usuário criado com sucesso!");
       this.setState({inputNomeUsuario: ""});
       this.setState({inputEmailUsuario: ""});  
+      alert("Usuário criado com sucesso!");
       this.buscarUsuario()
     }) .catch(error => {
       alert("Não foi possível cadastrar o usuário!")
@@ -137,11 +137,11 @@ class App extends React.Component {
           <ContainerDados>
             <ContainerInput>
               <label>Nome: </label>
-              <input placeholder="Insira seu nome" onChange={this.onChangeInputNome} />
+              <input placeholder="Insira seu nome" value ={this.state.inputNomeUsuario}onChange={this.onChangeInputNome} />
             </ContainerInput>
             <ContainerInput> 
               <label>E-mail: </label>
-              <input placeholder="Insira seu e-mail" onChange={this.onChangeInputEmail}/>
+              <input placeholder="Insira seu e-mail" value={this.state.inputEmailUsuario} onChange={this.onChangeInputEmail}/>
             </ContainerInput> 
             <ButtonSalvar onClick={this.criarUsuario}>Salvar</ButtonSalvar>
           </ContainerDados>
