@@ -1,174 +1,93 @@
 import React from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
+import CreateUser from './Components/CreateUser';
+import UserList from './Components/UserList';
+import UserDetail from './Components/UserDetail';
 
-const ContainerDados = styled.div`
+const ContainerApp = styled.div `
+
+`
+
+const ContainerButton = styled.div `
   display: flex;
-  border: 1px solid black;
-  flex-direction: column;
-  width:30%;
-  margin: 0 auto;
-  padding: 24px;
+  justify-content: center;
+  margin: 16px;
 `
 
-const ContainerInput = styled.div`
-display: flex;
-margin: 8px;
-align-self:center;
-`
+const ButtonMenu = styled.button `
+  margin: 0 8px;
+  z-index: 1;
+  font-size: inherit;
+  font-family: inherit;
+  color: white;
+  padding: 0.5em 1em;
+  outline: none;
+  border: none;
+  background-color: hsl(236, 32%, 26%);
+  
+  :hover {
+  cursor: pointer;
+  animation: jelly 0.5s;
+  }
 
-const ButtonSalvar = styled.button`
-  background-color: navy;
-  color: #FFF;
-  width: 50%;
-  align-self: center;
-  margin-top: 8px;
-  border:none;
-  border-radius: 10px;
-  height: 24px;
-`
-
-const ContainerUsuarios = styled.div`
-display: flex;
-flex-direction: column;
-align-items:center;
-`
-
-const Usuario = styled.p`
-  border-bottom: 1px solid black;
-  padding: 4px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-`
-
-const ContainerNomes = styled.div`
-width: 20%;
-display: flex;
-flex-direction: column;
-justify-content:space-around;
+  @keyframes jelly {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.05);
+  }
+  }
 `
 
 class App extends React.Component {
   state = {
-    renderizacao: true,
-    usuarios: [],
-    inputNomeUsuario: '',
-    inputEmailUsuario: ''
+    renderizacao: 'create-user',
   }
 
-  componentDidMount = () => {
-    this.buscarUsuario();
-  };
-
-  clickRenderizacao = () => {
-    this.setState({renderizacao: !this.state.renderizacao})
+  renderizaCreateUser = () => {
+     this.setState({renderizacao: 'create-user'})
   }
 
-  buscarUsuario = () => {
-    axios
-      .get(
-        'https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users', 
-        {
-          headers: {
-            Authorization: "diego-miyabara-turing"
-          }
-        }
-      )
-    .then(response => {
-      this.setState({usuarios: response.data})
-    })
-    .catch(error => {
-      console.log(error.data)
-    })
+  renderizaUserList = () => {
+    this.setState({renderizacao: 'user-list'})
   }
 
-  criarUsuario = () => {
-    const body = {
-      name: this.state.inputNomeUsuario,
-      email: this.state.inputEmailUsuario
-    }
-      axios.post("https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users", 
-      body, 
-      {
-        headers: {
-          Authorization: "diego-miyabara-turing"
-        }
-      }
-    )
-    .then(response => {
-      this.setState({inputNomeUsuario: ""});
-      this.setState({inputEmailUsuario: ""});  
-      alert("Usuário criado com sucesso!");
-      this.buscarUsuario()
-    }) .catch(error => {
-      alert("Não foi possível cadastrar o usuário!")
-      console.log(error.data)
-    })
-  }
-
-  deletarUsuario = (userId) => {
-    axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${userId}`, {
-      headers: {
-        Authorization:'diego-miyabara-turing'
-      }
-    }).then((response) => {
-      this.buscarUsuario()
-      alert("Deseja mesmo excluir este usuário?")
-    }).catch((error) => {
-      console.log(error.data)
-    })
-  }
-
-  onChangeInputNome = event => {
-    this.setState({inputNomeUsuario: event.target.value})
-  }
-
-  onChangeInputEmail = event => {
-    this.setState({inputEmailUsuario: event.target.value})
+  renderizaUserDetail = () => {
+    this.setState({renderizacao: 'user-detail'})
   }
 
   render(){
     const renderizacao = () => {
-      if(this.state.renderizacao){
-        return(
-        <div>
-          <button onClick={this.clickRenderizacao}>Ir para a página de lista</button>
-          <ContainerDados>
-            <ContainerInput>
-              <label>Nome: </label>
-              <input placeholder="Insira seu nome" value ={this.state.inputNomeUsuario}onChange={this.onChangeInputNome} />
-            </ContainerInput>
-            <ContainerInput> 
-              <label>E-mail: </label>
-              <input placeholder="Insira seu e-mail" value={this.state.inputEmailUsuario} onChange={this.onChangeInputEmail}/>
-            </ContainerInput> 
-            <ButtonSalvar onClick={this.criarUsuario}>Salvar</ButtonSalvar>
-          </ContainerDados>
-        </div>  
-        )
-      } else{
-        return (
-          <div>
-            <button onClick={this.clickRenderizacao}>Voltar</button>
-            <ContainerUsuarios>
-              <h3>Usuários Cadastrados</h3>
-              <ContainerNomes>
-                {this.state.usuarios.map(usuario => {
-                  return <Usuario key={usuario.id}>{usuario.name} <button onClick={() => this.deletarUsuario(usuario.id)}>x</button></Usuario>;
-                })}
-              </ContainerNomes>
-            </ContainerUsuarios>  
-          </div>
-        )
+      switch(this.state.renderizacao){
+        case 'create-user':
+          return <CreateUser />
+        case 'user-list':
+          return <UserList />
+        case 'user-detail':
+          return <UserDetail />
+        default:
+          return <CreateUser />
       }
-    }
+    } 
     return (
-      <div>
+      <ContainerApp>
+        <ContainerButton>
+          <ButtonMenu onClick={this.renderizaCreateUser}>Criar Usuário</ButtonMenu>
+          <ButtonMenu onClick={this.renderizaUserList}> Lista de Usuário</ButtonMenu>
+          <ButtonMenu onClick={this.renderizaUserDetail}> Detalhes dos Usuários</ButtonMenu>
+        </ContainerButton>
         {renderizacao()}
-      </div>
+      </ContainerApp>
     );
   }
-}
+  }
 
 export default App;
