@@ -9,6 +9,7 @@ const ContainerCasas = styled.div`
     margin: 8px auto;
     border-radius: 30px;
     padding: 4px;
+    border: 1px solid #381700;
 `
 
 const H1Titulo = styled.h1`
@@ -16,10 +17,12 @@ const H1Titulo = styled.h1`
   padding: 0;
   text-align: center;
   color:#FFF;
+  background: #111;
   border: 1px solid #FFF;
-  border-radius: 20px;
+  border-radius: 10px;
   margin: 16px;
   width: 30%;
+  box-sizing:border-box;
 `
 
 const H1Casa = styled.h1`
@@ -36,12 +39,13 @@ const ContainerApp = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 97vh;
+    height: 92vh;
 `
 
 class Casas extends React.Component {
     state = {
-        houses: []
+        houses: [],
+        brasao: ''
     }
 
     componentDidMount = () => {

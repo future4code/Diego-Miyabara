@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import background from '../images/background-character.jpg'
 
 const ContainerApp = styled.div`
     display: flex;
@@ -10,23 +11,20 @@ const ContainerApp = styled.div`
 `
 const H1Titulo = styled.h1`
   margin: 0;
-  padding: 0 0 5px 0;
+  padding: 0;
   text-align: center;
   color:#FFF;
+  background: #111;
   border: 1px solid #FFF;
-  border-radius: 20px;
+  border-radius: 10px;
   margin: 16px;
   width: 30%;
 `
 
 const ContainerPersonagens = styled.div`
-border-radius: 15px;
-border: 1px solid white;
 display: grid;
 gap: 8px;
 grid-template-columns: 1fr 1fr 1fr 1fr;
-background-color: #0D0638;
-color: #FFF;
 padding: 8px;
 margin: 8px;
 `
@@ -38,6 +36,11 @@ border-radius: 5px;
 display: flex;
 flex-direction: column;
 justify-content: center;
+background-image: url(${background});
+background-size: cover;
+color: #FFF;
+width: 85%;
+margin: 0 auto;
 `
 
 class Personagens extends React.Component {
@@ -51,9 +54,11 @@ class Personagens extends React.Component {
         .then(response => {
             this.setState({personagens: response.data})
         })
+        .catch(error => {
+            console.log(error)
+        })
     }
     render(){
-        console.log(this.state.personagens)
         return(
             <ContainerApp>
                 <H1Titulo>Personagens</H1Titulo>
@@ -64,7 +69,7 @@ class Personagens extends React.Component {
                             <p><strong>Nome: </strong>{personagem.name}</p>
                             {personagem.house && (<p><strong>Casa: </strong>{personagem.house}</p>)}
                             <p><strong>Linhagem: </strong>{personagem.bloodStatus}</p>
-                            <p><strong>Papel: </strong>{personagem.role}</p>
+                            {personagem.role && (<p><strong>Papel: </strong>{personagem.role}</p>)}
                         </Personagem>
                     )
                 })}
