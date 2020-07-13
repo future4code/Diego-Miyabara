@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 const ContainerBody = styled.div`
-    background-image: url("https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_960_720.jpg");
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Buzz_Aldrin.jpg/800px-Buzz_Aldrin.jpg");
+    background-size: cover;
     color: #FFF;
     width: 90%;
     height: 100%;
@@ -13,11 +14,11 @@ const ContainerBody = styled.div`
 `
 
 const H1Body = styled.h1`
-    margin: 0 32px;
+    margin: 0 16px;
     padding: 0;
 `
 const PBody = styled.p`
-    margin: 16px 32px;
+    margin: 16px 16px;
     padding: 0;
 `
 const ImgBody = styled.img`

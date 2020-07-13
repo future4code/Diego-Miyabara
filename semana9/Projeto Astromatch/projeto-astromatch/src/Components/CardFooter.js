@@ -29,7 +29,7 @@ export default function CardFooter () {
     return (
         <ContainerFooter>
             <ButtonFooter backGroundColor="red" borderColor="red">X</ButtonFooter>
-            <ButtonFooter backGroundColor="#FFF" borderColor="#00ff80"><img src={likeIcon} width="50px" height="50px"/></ButtonFooter>
+            <ButtonFooter backGroundColor="#00ff80" borderColor="#00ff80"><img src={likeIcon} width="50px" height="50px"/></ButtonFooter>
         </ContainerFooter>
     )
 }
