@@ -25,11 +25,11 @@ const ButtonFooter = styled.button`
     justify-content: center;
 `
 
-export default function CardFooter () {
+export default function CardFooter (props) {
     return (
         <ContainerFooter>
-            <ButtonFooter backGroundColor="red" borderColor="red">X</ButtonFooter>
-            <ButtonFooter backGroundColor="#00ff80" borderColor="#00ff80"><img src={likeIcon} width="50px" height="50px"/></ButtonFooter>
+            <ButtonFooter onClick={props.onClickReject}backGroundColor="red" borderColor="red">X</ButtonFooter>
+            <ButtonFooter onClick={props.onClickMatch} backGroundColor="#00ff80" borderColor="#00ff80"><img src={likeIcon} width="50px" height="50px" alt="Like Icon"/></ButtonFooter>
         </ContainerFooter>
     )
 }
