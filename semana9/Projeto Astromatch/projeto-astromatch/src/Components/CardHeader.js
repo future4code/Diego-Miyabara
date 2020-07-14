@@ -36,7 +36,7 @@ export default function CardHeader (props) {
     return (
         <ContainerHeader>
             <H1Header><SpanHeader color="red">astro</SpanHeader><SpanHeader color="blue">match</SpanHeader></H1Header>
-            <ButtonHeader><img src={matchIcon} height="30px" alt="Match Icon"/></ButtonHeader>
+            <ButtonHeader onClick={props.onClickRender}><img src={matchIcon} height="30px" alt="Match Icon"/></ButtonHeader>
         </ContainerHeader>
     )
 }

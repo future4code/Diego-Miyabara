@@ -6,6 +6,8 @@ const ContainerBody = styled.div`
     background-size: cover;
     background-position: center;
     color: #FFF;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: #696969;
     width: 90%;
     height: 100%;
     margin: 16px;

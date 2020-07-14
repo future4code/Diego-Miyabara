@@ -4,6 +4,7 @@ import CardHeader from './CardHeader'
 import CardBody from './CardBody'
 import CardFooter from './CardFooter'
 import axios from 'axios'
+import CardMatches from './CardMatches'
 
 const ContainerCard = styled.div`
 border: 1px solid black;
@@ -19,6 +20,8 @@ background-color: #FFF;
 
 export default function MainCard () {
     const [profiles, setProfiles] = useState({})
+    const [renderMatches, setRenderMatches] = useState(false)
+
 
     const baseURL = "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/diego-miyabara-turing"
 
@@ -63,11 +66,29 @@ export default function MainCard () {
         })
     }
 
+    const onClickRender = () => {
+        setRenderMatches(!renderMatches)
+    }
+    const renderBody = () => {
+        if(renderMatches === false){
+            return(
+                <ContainerCard>
+                    <CardHeader onClickRender={onClickRender}/>
+                    <CardBody name={profiles.name} age={profiles.age} bio={profiles.bio} photo={profiles.photo}/>
+                    <CardFooter onClickMatch={onClickMatch} onClickReject={onClickReject}/>
+                </ContainerCard>
+            )
+        } else if (renderMatches === true){
+            return(
+                <ContainerCard >
+                    <CardHeader onClickRender={onClickRender}/>
+                    <CardMatches baseURL={baseURL}/>
+                </ContainerCard>
+            )
+        }
+    }
+
     return (
-        <ContainerCard>
-           <CardHeader />
-           <CardBody name={profiles.name} age={profiles.age} bio={profiles.bio} photo={profiles.photo}/>
-           <CardFooter onClickMatch={onClickMatch} onClickReject={onClickReject}/>
-        </ContainerCard>
+        renderBody()
     )
 }
