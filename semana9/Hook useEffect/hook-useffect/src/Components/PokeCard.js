@@ -5,8 +5,8 @@ const PokeCard = (props) => {
     const [pokemon, setPokemon] = useState({})
 
   useEffect (() => {
-    pegaPokemon()
-  }, [pokemon])
+    pegaPokemon(props.pokemon)
+  }, [props.pokemon])
 
   const pegaPokemon = pokeName => {
     axios
