@@ -14,6 +14,7 @@ height: 70px;
 
 const SpanHeader = styled.span`
     color: ${props => props.color};
+    opacity: 70%;
 `
 
 const H1Header = styled.h1`

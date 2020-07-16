@@ -8,6 +8,7 @@ const ContainerMatches = styled.div`
     flex: 1;
     width: 100%;
     justify-content: space-between;
+    overflow: auto;
 `
 
 const ContainerMatch = styled.div`
@@ -30,25 +31,44 @@ const ImgMatch = styled.img`
 `
 
 const ButtonLimpar = styled.button`
- width: 50%;
- margin: 5px auto;
+    width: 50%;
+    margin: 5px auto;
+    border-radius: 4px;
+    background-color: #f4511e;
+    order: none;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 10px;
+    transition: all 0.5s;
+    cursor: pointer;
+    border: none;
+    opacity: 90%;
+    transform: 1s;
+    :hover{
+        transform: scale(1.1);
+        opacity: 100%;
+    }
 `
+
+const AllMatches = styled.div`
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+`
+const getMatches = async (baseURL) => {
+    const response = await
+    axios.get(`${baseURL}/matches`)
+    return response.data.matches;
+}
 
 export default function CardMatches (props) {
     const [matches, setMatches] = useState([])
     
-    const getMatches = () => {
-        axios.get(`${props.baseURL}/matches`)
-        .then((response) => {
-            setMatches(response.data.matches)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-    }
     useEffect (() => {
-        getMatches()
-    }, [])
+        getMatches(props.baseURL).then (matches => {
+            setMatches(matches)
+        })
+    }, [ props.baseURL])
 
     const clearMatches = () => {
         const body = {
@@ -57,25 +77,26 @@ export default function CardMatches (props) {
         if(window.confirm('Você deseja realmente limpar seus matchs?')) {
             axios.put(`${props.baseURL}/clear`, body)
             .then(() => {
-            alert('Seus matchs foram limpos')
-            getMatches()
+            setMatches([])
         }).catch((err) => {
             console.log(err)
         })}
     }
+
     return (
         <ContainerMatches>
-            <div>    
+            <AllMatches>    
                 <p><strong>Matches:</strong></p>
-                {matches === [] ? <div>Você não tem matches!</div> : matches.map((match) => {
+                {matches.length === 0 ? <div>Você não possui nenhum match!</div> :
+                matches.map((match) => {
                     return(
                         <ContainerMatch key={match.id}>
                             <ImgMatch src={match.photo} />
                             <span><strong>{match.name},</strong> {match.age} anos.</span>
                         </ContainerMatch>
                     )
-                })}
-            </div>
+                }) }
+            </AllMatches>
             <ButtonLimpar onClick={clearMatches}>Limpar Matches</ButtonLimpar>
         </ContainerMatches>
     )

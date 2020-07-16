@@ -23,13 +23,23 @@ const ButtonFooter = styled.button`
     width: 70px;
     height: 70px;
     justify-content: center;
+    transform: 1s;
+    opacity: 0.75;
+    :hover{
+        transform: scale(1.1);
+        opacity: 1;
+    }
 `
 
 export default function CardFooter (props) {
     return (
         <ContainerFooter>
-            <ButtonFooter onClick={props.onClickReject}backGroundColor="red" borderColor="red">X</ButtonFooter>
-            <ButtonFooter onClick={props.onClickMatch} backGroundColor="#00ff80" borderColor="#00ff80"><img src={likeIcon} width="50px" height="50px" alt="Like Icon"/></ButtonFooter>
+            {props.profile ? 
+            <ButtonFooter onClick={props.onClickReject} backGroundColor="red" borderColor="red">X</ButtonFooter> : 
+            <ButtonFooter backGroundColor="red" borderColor="red">X</ButtonFooter>}
+            {props.profile ? 
+            <ButtonFooter onClick={props.onClickMatch} backGroundColor="#00ff80" borderColor="#00ff80"><img src={likeIcon} width="50px" height="50px" alt="Like Icon"/></ButtonFooter> : 
+            <ButtonFooter backGroundColor="#00ff80" borderColor="#00ff80"><img src={likeIcon} width="50px" height="50px" alt="Like Icon"/></ButtonFooter>}
         </ContainerFooter>
     )
 }
