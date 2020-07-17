@@ -42,10 +42,9 @@ const ButtonLimpar = styled.button`
     transition: all 0.5s;
     cursor: pointer;
     border: none;
-    opacity: 90%;
+    opacity: 70%;
     transform: 1s;
     :hover{
-        transform: scale(1.1);
         opacity: 100%;
     }
 `
