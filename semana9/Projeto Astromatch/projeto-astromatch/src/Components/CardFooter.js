@@ -35,11 +35,13 @@ export default function CardFooter (props) {
     return (
         <ContainerFooter>
             {props.profile ? 
-            <ButtonFooter onClick={props.onClickReject} backGroundColor="red" borderColor="red">X</ButtonFooter> : 
-            <ButtonFooter backGroundColor="red" borderColor="red">X</ButtonFooter>}
+            <ButtonFooter backGroundColor="red" borderColor="red">X</ButtonFooter> :
+            <ButtonFooter onClick={props.onClickReject} backGroundColor="red" borderColor="red">X</ButtonFooter>
+            }
             {props.profile ? 
-            <ButtonFooter onClick={props.onClickMatch} backGroundColor="#00ff80" borderColor="#00ff80"><img src={likeIcon} width="50px" height="50px" alt="Like Icon"/></ButtonFooter> : 
-            <ButtonFooter backGroundColor="#00ff80" borderColor="#00ff80"><img src={likeIcon} width="50px" height="50px" alt="Like Icon"/></ButtonFooter>}
+            <ButtonFooter backGroundColor="#00ff80" borderColor="#00ff80"><img src={likeIcon} width="50px" height="50px" alt="Like Icon"/></ButtonFooter> :
+            <ButtonFooter onClick={props.onClickMatch} backGroundColor="#00ff80" borderColor="#00ff80"><img src={likeIcon} width="50px" height="50px" alt="Like Icon"/></ButtonFooter>
+            }
         </ContainerFooter>
     )
 }
