@@ -11,10 +11,14 @@ function ListTripPage () {
     const goToTripDetailsPage = () => {
         history.push("/trip-details")
     }
+    const goToCreateTripPage = () => {
+        history.push("/create-trip")
+    }
 
     return (
         <div>
             <Header />
+            <button onClick={goToCreateTripPage}>Criar Nova Viagem</button>
             <h1>Lista de Viagens</h1>
             <ContainerViagens>
                 {trips.map((trip) => {
