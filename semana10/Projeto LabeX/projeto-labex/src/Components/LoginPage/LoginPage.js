@@ -6,8 +6,8 @@ import useInput from '../../Hooks/useInput'
 import axios from 'axios';
 
 function LoginPage () {
-    const [email, setEmail] = useInput("")
-    const [password, setPassword] = useInput("")
+    let [email, setEmail] = useInput("")
+    let [password, setPassword] = useInput("")
     const history = useHistory();
     const baseUrl = "https://us-central1-labenu-apis.cloudfunctions.net/labeX/diego-miyabara-turing"
     
@@ -30,7 +30,7 @@ function LoginPage () {
         })
         .catch(err => {
             alert("Email ou senha inválidos!")
-
+            window.location.reload()
         })  
     }
     return (

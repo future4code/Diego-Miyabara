@@ -15,14 +15,29 @@ function Header () {
         window.localStorage.clear()
         history.push("/")
     }
+    const renderButton = () => {
+        const token = window.localStorage.getItem("token")
+        if(token === null){
+            return(
+                <ButtonHeader onClick={goToLoginPage}>Portal do Administrador</ButtonHeader> 
+            )
+        }else {
+            return(
+                <>
+                    <ButtonHeader onClick={goToLoginPage}>Painel do Administrador</ButtonHeader> 
+                    <ButtonHeader onClick={handleLogout}>Fazer Logout</ButtonHeader>
+                </>                
+            )
+        }
+        
+    }
     return(
         <HeaderContainer>
             <TituloOrg>Organizado por: Diego Miyabara</TituloOrg>
             <ContainerTitulo>
                 <TituloHeader onClick={goToHomePage}>LabeX</TituloHeader>
             </ContainerTitulo>
-            <ButtonHeader onClick={goToLoginPage}>Portal do Administrador</ButtonHeader>
-            <ButtonHeader onClick={handleLogout}>Fazer Logout</ButtonHeader>
+            {renderButton()}
         </HeaderContainer>
     )
 }
