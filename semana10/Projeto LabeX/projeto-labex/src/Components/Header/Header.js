@@ -10,14 +10,20 @@ function Header () {
     const goToHomePage = () => {
         history.push("/")
     }
+
+    const handleLogout = () => {
+        window.localStorage.clear()
+        history.push("/")
+    }
     return(
         <HeaderContainer>
-                <TituloOrg>Organizado por: Diego Miyabara</TituloOrg>
-                <ContainerTitulo>
-                    <TituloHeader onClick={goToHomePage}>LabeX</TituloHeader>
-                </ContainerTitulo>
-                <ButtonHeader onClick={goToLoginPage}>Portal do Administrador</ButtonHeader>
-            </HeaderContainer>
+            <TituloOrg>Organizado por: Diego Miyabara</TituloOrg>
+            <ContainerTitulo>
+                <TituloHeader onClick={goToHomePage}>LabeX</TituloHeader>
+            </ContainerTitulo>
+            <ButtonHeader onClick={goToLoginPage}>Portal do Administrador</ButtonHeader>
+            <ButtonHeader onClick={handleLogout}>Fazer Logout</ButtonHeader>
+        </HeaderContainer>
     )
 }
 

@@ -1,14 +1,12 @@
 import React from 'react'
-import {HeaderContainer, ContainerTitulo, ButtonHeader, TituloHeader, CardContainer, CardImage, TituloOrg} from './Style'
+import {CardContainer, CardImage} from './Style'
 import { useHistory } from "react-router-dom";
 import Header from '../Header/Header';
 
 
 function HomePage () {
     const history = useHistory();
-    const goToLoginPage = () => {
-        history.push("/login")
-    }
+
     const goToApplicationFormPage = () => {
         history.push("/formulario")
     }

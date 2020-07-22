@@ -15,8 +15,8 @@ function Router () {
                 <Route exact path="/login">
                     <LoginPage />
                 </Route>
-                <Route exact path ="/trip-details">
-                    <TripDetailsPage />
+                <Route exact path ="/trip-details/:tripId">
+                    <TripDetailsPage/>
                 </Route>
                 <Route exact path="/create-trip">
                     <CreateTripPage />
