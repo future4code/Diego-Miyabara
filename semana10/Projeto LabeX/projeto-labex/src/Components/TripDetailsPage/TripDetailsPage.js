@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import Header from '../Header/Header'
 import { useHistory, useParams } from "react-router-dom";
-import axios from 'axios';
 import styled from 'styled-components'
+import useRequestData from '../../Hooks/useRequestData'
 
 const CardCandidates = styled.div`
     background-color: #FFF;
@@ -19,26 +19,8 @@ const ContainerCandidates = styled.div`
 function TripDetailsPage () {
     const history = useHistory();
     const params = useParams();
-    const [tripDetail, setTripDetail] = useState("")
     const baseUrl = "https://us-central1-labenu-apis.cloudfunctions.net/labeX/diego-miyabara-turing"
-    
-    useEffect(() => {
-        const token = window.localStorage.getItem("token")
-        if(token === null){
-            history.push("/login")
-        }
-        axios.get(`${baseUrl}/trip/${params.tripId}`, {
-            headers: {
-                auth: token
-            }
-        })
-        .then(response => {
-            setTripDetail(response.data.trip)
-        })
-        .catch(err => {
-            console.log(err.message)
-        })
-    } ,[history, params] )
+    const trips = useRequestData(`${baseUrl}/trip/${params.tripId}`, [], "trip")
 
     const goToListTripPage = () => {
         history.push("/list-trip")
@@ -48,13 +30,14 @@ function TripDetailsPage () {
         <div>
             <Header />
                 <h1>Detalhes da Viagem</h1>
-                <h2>{tripDetail.name}</h2>
-                <h3>Planeta: {tripDetail.planet}</h3>
-                <p>Descrição: {tripDetail.description}</p>
-                <p>Data: {tripDetail.date}</p>
-                <p>Duração: {tripDetail.durationInDays} </p>
+                <h2>{trips.name}</h2>
+                <h3>Planeta: {trips.planet}</h3>
+                <p>Descrição: {trips.description}</p>
+                <p>Data: {trips.date}</p>
+                <p>Duração: {trips.durationInDays} </p>
                 <h2>Candidatos: </h2>
-                <ContainerCandidates>{tripDetail && tripDetail.candidates.map((candidate) => {
+                <ContainerCandidates>
+                    {trips.candidates && trips.candidates.map((candidate) => {
                     return (
                         <CardCandidates key={candidate.id}>
                             <p>Nome: {candidate.name}</p>

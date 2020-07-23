@@ -1,13 +1,25 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios'
+import { useHistory } from 'react-router-dom'
 
-export default function useRequestData(url, initialState) {
+export default function useRequestData(url, initialState, lastData) {
+    const history = useHistory()
     const [data, setData] = useState(initialState)
 
     useEffect(() => {
-        axios.get(url).then((response) => {
-            setData(response.data.trips)
+        const token = window.localStorage.getItem("token")
+        if (token === null) {
+            history.push("/")
+        } else{
+        axios.get(url, {
+            headers: {
+                auth: token
+            }}).then((response) => {
+            setData(response.data[lastData])
         })
-    }, [url])
+    .catch(err => {
+        console.log(err)
+    })}
+    }, [url, history, lastData])
     return data
 }

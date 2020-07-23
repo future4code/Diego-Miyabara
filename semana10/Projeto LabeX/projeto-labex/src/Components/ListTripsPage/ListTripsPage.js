@@ -1,19 +1,12 @@
-import React, { useEffect} from 'react'
+import React from 'react'
 import Header from '../Header/Header'
 import {ContainerViagens, CardViagem} from "./Style"
 import useRequestData from '../../Hooks/useRequestData'
 import { useHistory } from "react-router-dom";
 
 function ListTripPage () {
-    const trips = useRequestData('https://us-central1-labenu-apis.cloudfunctions.net/labeX/diego-miyabara-turing/trips', [])
+    const trips = useRequestData('https://us-central1-labenu-apis.cloudfunctions.net/labeX/diego-miyabara-turing/trips', [], "trips")
     const history = useHistory();
-    
-    useEffect(() => {
-        const token = window.localStorage.getItem("token")
-        if(token === null){
-            history.push("/login")
-        }
-    },[history])
 
     const goToTripDetailsPage = (tripId) => {
         history.push(`/trip-details/${tripId}`)
