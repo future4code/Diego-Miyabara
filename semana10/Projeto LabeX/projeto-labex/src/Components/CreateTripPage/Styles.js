@@ -3,8 +3,8 @@ import { Paper } from '@material-ui/core'
 
 export const StyledPaper = styled(Paper)`
     width: 60%;
-    margin: 40px auto;
-    padding: 20px;
+    margin: 20px auto;
+    padding: 20px 100px;
 `
 
 export const SelectField = styled.select`
@@ -17,4 +17,11 @@ color: grey;
 :hover{
     border: 1px solid black;
 }
+`
+
+export const StyledForm = styled.form`
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 `

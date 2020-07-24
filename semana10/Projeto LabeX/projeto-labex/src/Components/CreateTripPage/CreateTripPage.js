@@ -4,13 +4,14 @@ import Header from '../Header/Header';
 import useForm from '../../Hooks/useForm'
 import axios from 'axios';
 import 'rsuite/dist/styles/rsuite-default.css';
-import { Button } from 'rsuite';
-import {StyledPaper, SelectField} from "./Styles";
+import { Button, Alert } from 'rsuite';
+import {StyledPaper, SelectField, StyledForm } from "./Styles";
 import {TextField} from '@material-ui/core';
 
 function CreateTripPage () {
     const history = useHistory();
-    const {form, onChange} = useForm({name: "", planet: "", date: "", description: "", durationInDays: ""})
+    const today = new Date().toISOString().split("T")[0]
+    const {form, onChange} = useForm({name: "", planet: "", date: `${today}`, description: "", durationInDays: ""})
     const handleInputChange = event => {
         const {name, value} = event.target
         onChange(name, value)
@@ -27,7 +28,6 @@ function CreateTripPage () {
         history.push("/list-trip")
     }
 
-    const today = new Date().toISOString().split("T")[0]
 
     const handleCreateTrip = (e) => {
         e.preventDefault()
@@ -47,21 +47,21 @@ function CreateTripPage () {
             }
         })
         .then(() => {
-            alert("Viagem cadastrada com sucesso!")
-            window.location.reload()
+            Alert.success("Viagem cadastrada com sucesso!")
+            history.push("/list-trip")
         })
         .catch((err) => {
-            alert("Não foi possível criar a viagem. Verifique se as informações estão corretas.")
+            Alert.warning("Não foi possível criar a viagem. Verifique se as informações estão corretas.")
             window.location.reload()
         })
     }
     return (
         <div>
             <Header />
-            <button onClick={goToListTripPage}>Lista de Viagens</button>
+            <Button color="violet" onClick={goToListTripPage}>Lista de Viagens</Button>
             <StyledPaper>
+            <StyledForm onSubmit={handleCreateTrip}>   
             <h1>Nova Viagem</h1>
-            <form onSubmit={handleCreateTrip}>   
                 <TextField
                     variant="outlined"
                     label="Nome da Viagem"
@@ -103,12 +103,11 @@ function CreateTripPage () {
                     required
                 />
                 <TextField
-                    variant="outlined"
                     label="Data do embarque"
                     fullWidth="true" 
+                    margin="normal"
                     name="date"
                     type="date"
-                    placeholder="dd/mm/yy"
                     inputProps={{min:today}}
                     min={today}
                     value={form.date} 
@@ -128,8 +127,8 @@ function CreateTripPage () {
                     required
                 />
                 <br></br>
-                <Button type="submit" color="violet" appearance="ghost">Cadastrar Viagem</Button>
-            </form>
+                <Button type="submit" color="violet">Cadastrar Viagem</Button>
+            </StyledForm>
             </StyledPaper>
         </div>
     )
