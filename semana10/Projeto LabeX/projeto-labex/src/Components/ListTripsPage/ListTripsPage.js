@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Header from '../Header/Header'
 import {ContainerViagens, StyledPaper, ListTitle, StyledButton} from "./Style"
 import useRequestData from '../../Hooks/useRequestData'
@@ -20,7 +20,12 @@ function ListTripPage () {
     const goToNewUserPage = () => {
         history.push("/create-new-user")
     }
-
+    useEffect(() => {
+        const token = window.localStorage.getItem("token")
+        if(token === null){
+            history.push("/login")
+        }
+    }, [history])
     const handleDelete = (tripId) => {
         if(window.confirm("Tem certeza que deseja deletar esta viagem?")){ 
             Axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/diego-miyabara-turing/trips/${tripId}`)

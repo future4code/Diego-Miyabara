@@ -8,9 +8,6 @@ export default function useRequestData(url, initialState, lastData) {
 
     useEffect(() => {
         const token = window.localStorage.getItem("token")
-        if (token === null) {
-            history.push("/")
-        } else{
         axios.get(url, {
             headers: {
                 auth: token
@@ -19,7 +16,7 @@ export default function useRequestData(url, initialState, lastData) {
         })
     .catch(err => {
         console.log(err)
-    })}
+    })
     }, [url, history, lastData])
     return data
 }
