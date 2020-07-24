@@ -2,6 +2,8 @@ import React from 'react'
 import {CardContainer, CardImage} from './Style'
 import { useHistory } from "react-router-dom";
 import Header from '../Header/Header';
+import 'rsuite/dist/styles/rsuite-default.css';
+import { Button } from 'rsuite';
 
 
 function HomePage () {
@@ -20,7 +22,7 @@ function HomePage () {
             <CardContainer>
                 <p>Se você sempre teve aquela vontade de fazer uma viagem espacial, clique no botão abaixo e nos conte um pouco sobre você e vamos embarcar nesta aventura intergaláctica!</p>
             </CardContainer>
-            <button onClick={goToApplicationFormPage}>INSCREVA-SE</button>
+            <Button color="violet" size="lg" onClick={goToApplicationFormPage}>CLIQUE AQUI PARA SE INSCREVER!!!</Button>
         </div>
     )
 }

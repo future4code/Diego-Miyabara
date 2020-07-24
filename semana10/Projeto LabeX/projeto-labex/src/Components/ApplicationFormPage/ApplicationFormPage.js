@@ -5,9 +5,38 @@ import useForm from '../../Hooks/useForm'
 import Header from '../Header/Header'
 import Axios from 'axios'
 import styled from 'styled-components'
+import { Paper, TextField } from '@material-ui/core'
+import { Button } from 'rsuite'
 
-const TextArea = styled.textarea`
-    resize: none;
+const SelectField = styled.select`
+    display: block;
+    width: 400px;
+    margin: 0 auto;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    color: grey;
+    :hover{
+        border: 1px solid black;
+    }
+`
+
+const SyledPaper = styled(Paper)`
+    width: 60%;
+    margin: 40px auto;
+    padding: 20px;
+`
+
+const StyledForm = styled.form`
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 550px;
+    justify-content: space-evenly;
+`
+
+const StyledButton = styled(Button)`
+    width:400px;
+    margin: 0 auto;
 `
 
 
@@ -41,20 +70,25 @@ function ApplicationFormPage () {
     return (
         <div>
             <Header />
-            <form onSubmit={handleFormSubmit}>
+            <SyledPaper>
+            <StyledForm onSubmit={handleFormSubmit}>
                     <h3>Formulário de Participação</h3>
-                    <input 
+                    <TextField
+                        variant="outlined"
+                        label="Nome Completo"
+                        fullWidth="true"
+                        inputProps={{pattern: "^.{3,}", title:"Seu nome precisa ter no mínimo 3 caracteres"}}                        
                         type="text"
                         name="name"
                         placeholder="Digite seu Nome Completo"
-                        pattern="^.{3,}"
-                        title="Seu nome precisa ter no mínimo 3 caracteres"
                         value={form.name}
                         required
                         onChange={handleInputChange}
                     />
-                    <br></br>
-                    <input 
+                    <TextField
+                        variant="outlined"
+                        label="Idade"
+                        fullWidth="true"
                         type="number" 
                         min="18"
                         name="age"
@@ -63,28 +97,32 @@ function ApplicationFormPage () {
                         required
                         onChange={handleInputChange}
                     />
-                    <TextArea
-                        rows="5"
-                        cols="100"
+                    <TextField
+                        variant="outlined"
+                        label="Motivo de ser escolhido"
+                        fullWidth="true"
+                        multiline
+                        rows={4}
+                        inputProps={{pattern: "^.{30,}", title:"O texto precisa ter no mínimo 30 caracteres"}} 
                         name="applicationText"
                         placeholder="Digite o porque você merece ser selecionado"
-                        pattern="^.{30,}"
-                        title="O texto precisa ter no mínimo 30 caracteres"
                         value={form.applicationText} 
                         required
                         onChange={handleInputChange}
                     />
-                    <input 
+                    <TextField
+                        variant="outlined"
+                        label="Profissão"
+                        fullWidth="true" 
+                        inputProps={{pattern: "^.{5,}", title:"A profissão precisa ter no mínimo 5 caracteres"}} 
                         type="text" 
                         name="profession"
                         placeholder="Digite sua profissão"
-                        pattern="^.{5,}"
-                        title="A profissão precisa ter no mínimo 5 caracteres"
                         value={form.profession} 
                         required
                         onChange={handleInputChange}
                     />
-                    <select 
+                    <SelectField 
                         name="country"
                         onChange={handleInputChange}
                         value={form.country} 
@@ -94,8 +132,8 @@ function ApplicationFormPage () {
                             Escolha o País
                         </option>
                         <Countries/>
-                    </select>
-                    <select 
+                    </SelectField>
+                    <SelectField 
                         name="trip"
                         onChange={handleInputChange}
                         value={form.trip} 
@@ -107,10 +145,11 @@ function ApplicationFormPage () {
                                 <option key={trip.id} value={trip.id}>{trip.name}</option>
                             )
                         })}
-                    </select>
+                    </SelectField>
                     <br></br>
-                    <button>Enviar Formulário</button>
-                </form>
+                    <StyledButton color="violet" appearance="ghost">Enviar Formulário</StyledButton>
+                </StyledForm>
+                </SyledPaper>
         </div>
     )
 }

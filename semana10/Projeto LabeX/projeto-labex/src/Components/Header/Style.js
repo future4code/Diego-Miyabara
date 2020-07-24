@@ -22,19 +22,15 @@ export const ContainerTitulo = styled.div`
     align-items: center;
 `
 
-export const ButtonHeader = styled.button`
-    height: 30px;
-    width: 300px;
-    align-self: center;
-    background-color: #000;
-    color: #FFF;
-    border: none;
-    cursor: pointer;
-    outline: none;
-`
-
 export const TituloHeader = styled.h1`
     margin: 0;
     padding: 0;
     cursor: pointer;
 ` 
+
+export const ButtonContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 350px;
+`

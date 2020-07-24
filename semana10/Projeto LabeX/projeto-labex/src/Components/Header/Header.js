@@ -1,6 +1,8 @@
 import React from 'react'
-import {HeaderContainer, ContainerTitulo, TituloHeader, ButtonHeader, TituloOrg} from "./Style"
+import {HeaderContainer, ContainerTitulo, TituloHeader, TituloOrg, ButtonContainer} from "./Style"
 import { useHistory } from "react-router-dom";
+import 'rsuite/dist/styles/rsuite-default.css';
+import { Button } from 'rsuite';
 
 function Header () {
     const history = useHistory();
@@ -14,26 +16,29 @@ function Header () {
     const handleLogout = () => {
         window.localStorage.clear()
         history.push("/")
+        window.location.reload()
     }
     const renderButton = () => {
         const token = window.localStorage.getItem("token")
         if(token === null){
             return(
-                <ButtonHeader onClick={goToLoginPage}>Portal do Administrador</ButtonHeader> 
+                <ButtonContainer>
+                    <Button color="blue" appearance="ghost" size="sm" onClick={goToLoginPage}>Portal do Administrador</Button> 
+                </ButtonContainer>
             )
         }else {
             return(
-                <>
-                    <ButtonHeader onClick={goToLoginPage}>Painel do Administrador</ButtonHeader> 
-                    <ButtonHeader onClick={handleLogout}>Fazer Logout</ButtonHeader>
-                </>                
+                <ButtonContainer>
+                    <Button color="blue" appearance="ghost" size="sm" onClick={goToLoginPage}>Painel do Administrador</Button> 
+                    <Button color="blue" appearance="ghost" size="sm" onClick={handleLogout}>Fazer Logout</Button>
+                </ButtonContainer>                
             )
         }
         
     }
     return(
         <HeaderContainer>
-            <TituloOrg>Organizado por: Diego Miyabara</TituloOrg>
+            <TituloOrg></TituloOrg>
             <ContainerTitulo>
                 <TituloHeader onClick={goToHomePage}>LabeX</TituloHeader>
             </ContainerTitulo>

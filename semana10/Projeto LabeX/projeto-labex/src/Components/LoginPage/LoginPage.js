@@ -1,9 +1,12 @@
 import React, {useEffect} from 'react'
-import { ContainerLogin, LoginButton} from './Style'
+import { ContainerLogin, ContainerInputs} from './Style'
 import { useHistory } from "react-router-dom";
 import Header from '../Header/Header';
 import useForm from '../../Hooks/useForm'
 import axios from 'axios';
+import 'rsuite/dist/styles/rsuite-default.css';
+import { Button, Alert } from 'rsuite';
+import {TextField} from '@material-ui/core'
 
 function LoginPage () {
     const history = useHistory();
@@ -30,10 +33,11 @@ function LoginPage () {
         axios.post(`${baseUrl}/login`, body)
         .then(response => {
             window.localStorage.setItem("token", response.data.token)
+            Alert.success("Login feito com sucesso!", 3000)
             history.push("/list-trip")
         })
         .catch(err => {
-            alert("Email ou senha inválidos!")
+            Alert.error("Email ou senha inválidos!", 3000)
             window.location.reload()
         })  
     }
@@ -43,25 +47,31 @@ function LoginPage () {
             <ContainerLogin>
                 <form onSubmit={handleLogin}>
                     <h3>Login</h3>
-                    <input 
-                        type="email"
-                        name="email"
-                        placeholder="Digite seu E-mail"
-                        value={form.email}
-                        required
-                        onChange={handleInputChange}
-                    />
+                    <ContainerInputs>
+                        <TextField 
+                            label="Login" 
+                            variant="outlined"
+                            type="email"
+                            name="email"
+                            placeholder="Digite seu E-mail"
+                            value={form.email}
+                            required
+                            onChange={handleInputChange}
+                        />
+                        <br></br>
+                        <TextField  
+                            label="Senha" 
+                            variant="outlined"                      
+                            type="password" 
+                            name="password"
+                            placeholder="Digite sua senha"
+                            value={form.password} 
+                            required
+                            onChange={handleInputChange}
+                        />
+                    </ContainerInputs>
                     <br></br>
-                    <input 
-                        type="password" 
-                        name="password"
-                        placeholder="Digite sua senha"
-                        value={form.password} 
-                        required
-                        onChange={handleInputChange}
-                    />
-                    <br></br>
-                    <LoginButton>Fazer Login</LoginButton>
+                    <Button color="violet" type="submit">Fazer Login</Button>
                 </form>
             </ContainerLogin>    
         </div>

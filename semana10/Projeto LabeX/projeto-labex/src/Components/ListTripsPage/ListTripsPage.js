@@ -1,8 +1,10 @@
 import React from 'react'
 import Header from '../Header/Header'
-import {ContainerViagens, CardViagem} from "./Style"
+import {ContainerViagens, StyledPaper, ListTitle, StyledButton} from "./Style"
 import useRequestData from '../../Hooks/useRequestData'
 import { useHistory } from "react-router-dom";
+import { Button } from 'rsuite';
+
 
 function ListTripPage () {
     const trips = useRequestData('https://us-central1-labenu-apis.cloudfunctions.net/labeX/diego-miyabara-turing/trips', [], "trips")
@@ -18,19 +20,21 @@ function ListTripPage () {
     return (
         <div>
             <Header />
-            <button onClick={goToCreateTripPage}>Criar Nova Viagem</button>
-            <h1>Lista de Viagens</h1>
+            <StyledButton color="violet" onClick={goToCreateTripPage}>Criar Nova Viagem</StyledButton>
+            <StyledButton color="violet" onClick={goToCreateTripPage}>Criar Novo Usuário</StyledButton>
+            <StyledButton color="violet" onClick={goToCreateTripPage}>Deletar Viagem</StyledButton>
+            <ListTitle>Lista de Viagens</ListTitle>
             <ContainerViagens>
                 {trips.map((trip) => {
                     return(
-                        <CardViagem key={trip.id}>
-                            <h2>{trip.name}</h2>
+                        <StyledPaper key={trip.id}>
+                            <h3>{trip.name}</h3>
                             <p>Planeta: {trip.planet}</p>
                             <p>{trip.description}</p>
                             <p>Data: {trip.date}</p>
                             <p>Duração: {trip.durationInDays} dias</p>
-                            <button onClick={() => goToTripDetailsPage(trip.id)}>Detalhes da Viagem</button>
-                        </CardViagem>
+                            <Button color="violet" onClick={() => goToTripDetailsPage(trip.id)}>Detalhes da Viagem</Button>
+                        </StyledPaper>
                     )
                 })}
                

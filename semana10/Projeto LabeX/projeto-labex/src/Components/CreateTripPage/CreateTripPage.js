@@ -3,6 +3,10 @@ import { useHistory } from "react-router-dom";
 import Header from '../Header/Header';
 import useForm from '../../Hooks/useForm'
 import axios from 'axios';
+import 'rsuite/dist/styles/rsuite-default.css';
+import { Button } from 'rsuite';
+import {StyledPaper, SelectField} from "./Styles";
+import {TextField} from '@material-ui/core';
 
 function CreateTripPage () {
     const history = useHistory();
@@ -55,25 +59,27 @@ function CreateTripPage () {
         <div>
             <Header />
             <button onClick={goToListTripPage}>Lista de Viagens</button>
+            <StyledPaper>
             <h1>Nova Viagem</h1>
             <form onSubmit={handleCreateTrip}>   
-                <p>Nome da Viagem:</p>
-                <input 
+                <TextField
+                    variant="outlined"
+                    label="Nome da Viagem"
+                    fullWidth="true" 
+                    inputProps={{pattern: "^.{5,}", title:"O nome da viagem precisa ter no mínimo 5 caracteres"}}
                     name="name"
                     value={form.name} 
                     onChange={handleInputChange}
-                    pattern="^.{5,}"
-                    title="O nome da viagem precisa ter no mínimo 5 caracteres"
                     required
                 />
-                <p>Planeta Destino:</p>
-                <select 
+
+                <SelectField 
                     name="planet"
                     value={form.planet} 
                     onChange={handleInputChange}
                     required
                 >
-                    <option value=""></option>
+                    <option value="">Escolha o Planeta</option>
                     <option value="Mercúrio">Mercúrio</option>
                     <option value="Vênus">Vênus</option>
                     <option value="Terra">Terra</option>
@@ -83,30 +89,38 @@ function CreateTripPage () {
                     <option value="Urano">Urano</option>
                     <option value="Netuno">Netuno</option>
                     <option value="Plutão">Plutão</option>
-                </select>
-                <p>Descrição:</p>
-                <input 
+                </SelectField>
+                <TextField
+                    variant="outlined"
+                    label="Descrição da viagem"
+                    fullWidth="true"
+                    multiline
+                    rows={4} 
+                    inputProps={{pattern: "^.{5,}", title:"O nome da viagem precisa ter no mínimo 30 caracteres"}}
                     name="description"
                     value={form.description} 
                     onChange={handleInputChange}
-                    pattern="^.{5,}"
-                    title="O nome da viagem precisa ter no mínimo 30 caracteres"
                     required
                 />
-                <p>Data do embarque:</p>
-                <input 
+                <TextField
+                    variant="outlined"
+                    label="Data do embarque"
+                    fullWidth="true" 
                     name="date"
                     type="date"
+                    placeholder="dd/mm/yy"
+                    inputProps={{min:today}}
                     min={today}
                     value={form.date} 
                     onChange={handleInputChange}
-                    placeholder="Ex: dd/mm/aa"
                     required
                 />
-                <p>Duração da viagem:</p>
-                <input 
+                <TextField
+                    variant="outlined"
+                    label="Duração da Viagem"
+                    fullWidth="true"  
                     type="number"
-                    min="50"
+                    inputProps={{min:"15"}}
                     name="durationInDays"
                     value={form.durationInDays} 
                     onChange={handleInputChange} 
@@ -114,9 +128,9 @@ function CreateTripPage () {
                     required
                 />
                 <br></br>
-                <button>Cadastrar Viagem</button>
+                <Button type="submit" color="violet" appearance="ghost">Cadastrar Viagem</Button>
             </form>
-            
+            </StyledPaper>
         </div>
     )
 }
