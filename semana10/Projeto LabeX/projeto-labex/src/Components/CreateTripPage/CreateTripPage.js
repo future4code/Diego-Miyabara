@@ -1,16 +1,16 @@
 import React, {useEffect} from 'react'
 import { useHistory } from "react-router-dom";
 import Header from '../Header/Header';
-import useInput from '../../Hooks/useInput';
+import useForm from '../../Hooks/useForm'
 import axios from 'axios';
 
 function CreateTripPage () {
     const history = useHistory();
-    const [name, onChangeName] = useInput("")
-    const [destination, onChangeDestination] = useInput("")
-    const [description, onChangeDescription] = useInput("")
-    const [date, onChangeDate] = useInput("")
-    const [duration, onChangeDuration] = useInput("")
+    const {form, onChange} = useForm({name: "", planet: "", date: "", description: "", durationInDays: ""})
+    const handleInputChange = event => {
+        const {name, value} = event.target
+        onChange(name, value)
+    }
     
     useEffect(() => {
         const token = window.localStorage.getItem("token")
@@ -23,14 +23,19 @@ function CreateTripPage () {
         history.push("/list-trip")
     }
 
-    const handleCreateTrip = () => {
+    const today = new Date().toISOString().split("T")[0]
+
+    const handleCreateTrip = (e) => {
+        e.preventDefault()
         const token = window.localStorage.getItem("token")
+        const [ year, month, day ] = form.date.split("-")
+
         const body = {
-            "name": name,
-            "planet": destination,
-            "date": date,
-            "description": description,
-            "durationInDays": duration
+            "name": form.name,
+            "planet": form.planet,
+            "date": `${day}/${month}/${year.substring(2,4)}`,
+            "description": form.description,
+            "durationInDays": form.durationInDays
         }
         axios.post("https://us-central1-labenu-apis.cloudfunctions.net/labeX/diego-miyabara-turing/trips", body, {
             headers: {
@@ -51,19 +56,66 @@ function CreateTripPage () {
             <Header />
             <button onClick={goToListTripPage}>Lista de Viagens</button>
             <h1>Nova Viagem</h1>
-            <div>   
+            <form onSubmit={handleCreateTrip}>   
                 <p>Nome da Viagem:</p>
-                <input value={name} onChange={onChangeName}/>
+                <input 
+                    name="name"
+                    value={form.name} 
+                    onChange={handleInputChange}
+                    pattern="^.{5,}"
+                    title="O nome da viagem precisa ter no mínimo 5 caracteres"
+                    required
+                />
                 <p>Planeta Destino:</p>
-                <input value={destination} onChange={onChangeDestination}/>
+                <select 
+                    name="planet"
+                    value={form.planet} 
+                    onChange={handleInputChange}
+                    required
+                >
+                    <option value=""></option>
+                    <option value="Mercúrio">Mercúrio</option>
+                    <option value="Vênus">Vênus</option>
+                    <option value="Terra">Terra</option>
+                    <option value="Marte">Marte</option>
+                    <option value="Júpiter">Júpiter</option>
+                    <option value="Saturno">Saturno</option>
+                    <option value="Urano">Urano</option>
+                    <option value="Netuno">Netuno</option>
+                    <option value="Plutão">Plutão</option>
+                </select>
                 <p>Descrição:</p>
-                <input value={description} onChange={onChangeDescription}/>
+                <input 
+                    name="description"
+                    value={form.description} 
+                    onChange={handleInputChange}
+                    pattern="^.{5,}"
+                    title="O nome da viagem precisa ter no mínimo 30 caracteres"
+                    required
+                />
                 <p>Data do embarque:</p>
-                <input value={date} onChange={onChangeDate} placeholder="Ex: 21/10/20"/>
+                <input 
+                    name="date"
+                    type="date"
+                    min={today}
+                    value={form.date} 
+                    onChange={handleInputChange}
+                    placeholder="Ex: dd/mm/aa"
+                    required
+                />
                 <p>Duração da viagem:</p>
-                <input value={duration} onChange={onChangeDuration} placeholder="Ex: 365 dias"/>
-            </div>
-            <button onClick={handleCreateTrip}>Cadastrar Viagem</button>
+                <input 
+                    type="number"
+                    min="50"
+                    name="durationInDays"
+                    value={form.durationInDays} 
+                    onChange={handleInputChange} 
+                    placeholder="Ex: 365 dias"
+                    required
+                />
+                <br></br>
+                <button>Cadastrar Viagem</button>
+            </form>
             
         </div>
     )

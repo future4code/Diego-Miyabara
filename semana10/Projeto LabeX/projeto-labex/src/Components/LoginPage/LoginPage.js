@@ -1,15 +1,18 @@
 import React, {useEffect} from 'react'
-import { ContainerLogin, TituloLogin, LoginButton} from './Style'
+import { ContainerLogin, LoginButton} from './Style'
 import { useHistory } from "react-router-dom";
 import Header from '../Header/Header';
-import useInput from '../../Hooks/useInput'
+import useForm from '../../Hooks/useForm'
 import axios from 'axios';
 
 function LoginPage () {
-    let [email, setEmail] = useInput("")
-    let [password, setPassword] = useInput("")
     const history = useHistory();
     const baseUrl = "https://us-central1-labenu-apis.cloudfunctions.net/labeX/diego-miyabara-turing"
+    const {form, onChange} = useForm({email:"", password: ""})
+    const handleInputChange = event => {
+        const {name, value} = event.target
+        onChange(name, value)
+    }
     
     useEffect(() => {
         const token = window.localStorage.getItem("token")
@@ -18,10 +21,11 @@ function LoginPage () {
         }
     },[history])
 
-    const handleLogin = () => {
+    const handleLogin = (event) => {
+        event.preventDefault()
         const body = {
-            email: email,
-            password: password
+            email: form.email,
+            password: form.password
         }
         axios.post(`${baseUrl}/login`, body)
         .then(response => {
@@ -37,15 +41,28 @@ function LoginPage () {
         <div>
             <Header />
             <ContainerLogin>
-                <div>
-                    <TituloLogin>Email:</TituloLogin>
-                    <input value={email} onChange={setEmail}/>
-                </div>
-                <div>
-                    <TituloLogin>Senha:</TituloLogin>
-                    <input type="password" value={password} onChange={setPassword}/>
-                </div>
-                <LoginButton onClick={handleLogin}>Fazer Login</LoginButton>
+                <form onSubmit={handleLogin}>
+                    <h3>Login</h3>
+                    <input 
+                        type="email"
+                        name="email"
+                        placeholder="Digite seu E-mail"
+                        value={form.email}
+                        required
+                        onChange={handleInputChange}
+                    />
+                    <br></br>
+                    <input 
+                        type="password" 
+                        name="password"
+                        placeholder="Digite sua senha"
+                        value={form.password} 
+                        required
+                        onChange={handleInputChange}
+                    />
+                    <br></br>
+                    <LoginButton>Fazer Login</LoginButton>
+                </form>
             </ContainerLogin>    
         </div>
     )
