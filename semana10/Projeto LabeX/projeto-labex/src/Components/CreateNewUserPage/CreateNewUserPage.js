@@ -1,51 +1,49 @@
-import React, {useEffect} from 'react'
-import { ContainerLogin, ContainerInputs} from './Style'
-import { useHistory } from "react-router-dom";
+import React, {useEffect} from 'react';
 import Header from '../Header/Header';
+import {ContainerLogin, ContainerInputs, ContainerButton} from './Styles';
+import {TextField} from '@material-ui/core';
 import useForm from '../../Hooks/useForm'
-import axios from 'axios';
-import 'rsuite/dist/styles/rsuite-default.css';
-import { Button, Alert } from 'rsuite';
-import {TextField} from '@material-ui/core'
+import { useHistory } from "react-router-dom";
+import {Button, Alert} from 'rsuite'
+import Axios from 'axios';
 
-function LoginPage () {
+function CreateNewUserPage () {
     const history = useHistory();
-    const baseUrl = "https://us-central1-labenu-apis.cloudfunctions.net/labeX/diego-miyabara-turing"
     const {form, onChange} = useForm({email:"", password: ""})
     const handleInputChange = event => {
         const {name, value} = event.target
         onChange(name, value)
     }
-    
     useEffect(() => {
         const token = window.localStorage.getItem("token")
-        if(token !== null){
-            history.push("/list-trip")
+        if(token === null){
+            history.push("/login")
         }
     },[history])
-
-    const handleLogin = (event) => {
+    const handleCreateUser = (event) => {
         event.preventDefault()
-        const body = {
-            email: form.email,
-            password: form.password
+        const body= {
+            "email": form.email,
+	        "password": form.password
         }
-        axios.post(`${baseUrl}/login`, body)
-        .then(response => {
-            window.localStorage.setItem("token", response.data.token)
-            Alert.success("Login feito com sucesso!", 3000)
-            history.push("/list-trip")
+        Axios.post("https://us-central1-labenu-apis.cloudfunctions.net/labeX/diego-miyabara-turing/signup", body)
+        .then(() => {
+            Alert.success("Usuário criado com sucesso!")
+            history.push("/create-new-user")
         })
-        .catch(err => {
-            Alert.error("Email ou senha inválidos!", 3000)
-        })  
+        .catch(() => {
+            Alert.warning("Não foi possível criar o usuário.")
+        })
+    }
+    const goToListTripPage = () => {
+        history.push("/list-trip")
     }
     return (
         <div>
             <Header />
             <ContainerLogin>
-                <form onSubmit={handleLogin}>
-                    <h3>Login</h3>
+                <form onSubmit={handleCreateUser}>
+                    <h3>Novo Usuário</h3>
                     <ContainerInputs>
                         <TextField 
                             label="Login" 
@@ -69,12 +67,14 @@ function LoginPage () {
                             onChange={handleInputChange}
                         />
                     </ContainerInputs>
-                    <br></br>
-                    <Button color="violet" type="submit">Fazer Login</Button>
+                    <ContainerButton>
+                        <Button color="violet" type="submit">Criar novo usuário!</Button>
+                        <Button color="red" onClick={goToListTripPage}>Voltar</Button>
+                    </ContainerButton>
                 </form>
-            </ContainerLogin>    
+            </ContainerLogin> 
         </div>
     )
 }
 
-export default LoginPage
+export default CreateNewUserPage

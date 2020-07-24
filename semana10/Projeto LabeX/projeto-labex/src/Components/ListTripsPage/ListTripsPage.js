@@ -17,6 +17,9 @@ function ListTripPage () {
     const goToCreateTripPage = () => {
         history.push("/create-trip")
     }
+    const goToNewUserPage = () => {
+        history.push("/create-new-user")
+    }
 
     const handleDelete = (tripId) => {
         if(window.confirm("Tem certeza que deseja deletar esta viagem?")){ 
@@ -36,7 +39,7 @@ function ListTripPage () {
         <div>
             <Header />
             <StyledButton color="violet" onClick={goToCreateTripPage}>Criar Nova Viagem</StyledButton>
-            <StyledButton color="violet" onClick={goToCreateTripPage}>Criar Novo Usuário</StyledButton>
+            <StyledButton color="violet" onClick={goToNewUserPage}>Criar Novo Usuário</StyledButton>
             <ListTitle>Lista de Viagens</ListTitle>
             <ContainerViagens>
                 {trips.map((trip) => {

@@ -4,50 +4,22 @@ import useRequestData from '../../Hooks/useRequestData'
 import useForm from '../../Hooks/useForm'
 import Header from '../Header/Header'
 import Axios from 'axios'
-import styled from 'styled-components'
-import { Paper, TextField } from '@material-ui/core'
-import { Button } from 'rsuite'
-
-const SelectField = styled.select`
-    display: block;
-    width: 400px;
-    margin: 0 auto;
-    border: 1px solid lightgrey;
-    border-radius: 5px;
-    color: grey;
-    :hover{
-        border: 1px solid black;
-    }
-`
-
-const SyledPaper = styled(Paper)`
-    width: 60%;
-    margin: 40px auto;
-    padding: 20px;
-`
-
-const StyledForm = styled.form`
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    height: 550px;
-    justify-content: space-evenly;
-`
-
-const StyledButton = styled(Button)`
-    width:400px;
-    margin: 0 auto;
-`
+import {SelectField, SyledPaper, StyledForm, StyledButton} from "./Styles"
+import { TextField } from '@material-ui/core'
+import { useHistory } from "react-router-dom";
 
 
 function ApplicationFormPage () {
     const trips = useRequestData('https://us-central1-labenu-apis.cloudfunctions.net/labeX/diego-miyabara-turing/trips', [], "trips")
+    const history = useHistory();
     const {form, onChange} = useForm({name:"", age: "", applicationText: "", profession: "", country: "", trip: ""})
     const handleInputChange = event => {
         const {name, value} = event.target
         onChange(name, value)
     }
-
+    const goToHomePage = () => {
+        history.push("/")
+    }
     const handleFormSubmit = (e) => {
         e.preventDefault()
         const body = {
@@ -147,8 +119,9 @@ function ApplicationFormPage () {
                         })}
                     </SelectField>
                     <br></br>
-                    <StyledButton color="violet" appearance="ghost">Enviar Formulário</StyledButton>
+                    <StyledButton type="submit" color="violet">Enviar Formulário</StyledButton>
                 </StyledForm>
+                    <StyledButton color="red" onClick={goToHomePage}>Voltar para a página inicial</StyledButton>
                 </SyledPaper>
         </div>
     )

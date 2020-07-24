@@ -7,6 +7,7 @@ import CreateTripPage from './CreateTripPage/CreateTripPage';
 import ListTripPage from './ListTripsPage/ListTripsPage';
 import Page404 from './404/404';
 import ApplicationFormPage from './ApplicationFormPage/ApplicationFormPage';
+import CreateNewUserPage from './CreateNewUserPage/CreateNewUserPage';
 
 function Router () {
     return(
@@ -20,6 +21,9 @@ function Router () {
                 </Route>
                 <Route exact path="/create-trip">
                     <CreateTripPage />
+                </Route>
+                <Route exact path="/create-new-user">
+                    <CreateNewUserPage />
                 </Route>
                 <Route exact path="/list-trip">
                     <ListTripPage />

@@ -58,7 +58,7 @@ function CreateTripPage () {
     return (
         <div>
             <Header />
-            <Button color="violet" onClick={goToListTripPage}>Lista de Viagens</Button>
+            
             <StyledPaper>
             <StyledForm onSubmit={handleCreateTrip}>   
             <h1>Nova Viagem</h1>
@@ -128,6 +128,8 @@ function CreateTripPage () {
                 />
                 <br></br>
                 <Button type="submit" color="violet">Cadastrar Viagem</Button>
+
+                <Button color="red" onClick={goToListTripPage}>Voltar</Button>
             </StyledForm>
             </StyledPaper>
         </div>
