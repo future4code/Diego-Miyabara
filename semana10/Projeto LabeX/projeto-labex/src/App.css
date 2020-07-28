@@ -1,0 +1,9 @@
+body {
+  background-image: url("./Images/space-background.jpg");
+  background-size: cover;
+}
+
+.App {
+  text-align: center;
+}
+
