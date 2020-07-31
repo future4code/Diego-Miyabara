@@ -11,12 +11,15 @@ function TaskForm (props) {
                 placeholder="Nome da tarefa"
                 onChange={props.handleInputChange}
                 name="text"
-                value={props.form.text} />
+                value={props.form.text} 
+                required
+                />
                 <select
-                title="Select"
+                data-testid="select"
                 onChange={props.handleInputChange}
                 name="day"
                 value={props.form.day}
+                required
                 >
                     <option value="">Dia da Semana</option>
                     <option value="Segunda">Segunda-feira</option>

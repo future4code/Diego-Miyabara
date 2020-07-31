@@ -30,15 +30,13 @@ function App() {
             text: form.text,
             day: form.day
         }
-        if(form.text !== "" && form.day !== ""){
-          axios.post(baseUrl, body)
+        
+        axios.post(baseUrl, body)
           .then(() => {
             alert("Tarefa Criada com sucesso")
             resetForm()
             getTasks()
-        })} else {
-          alert("Verifique se todos os campos foram preenchidos!")
-        }
+        })
     }
 
     const handleDelete = (taskId) => {

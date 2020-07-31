@@ -1,4 +1,4 @@
-import React  from 'react';
+import React from 'react';
 import { WeekContainer, DayContainer, DayTitle, DeleteButton} from './Style';
 
 
