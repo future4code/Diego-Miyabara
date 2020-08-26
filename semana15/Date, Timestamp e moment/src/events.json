@@ -1,0 +1,14 @@
+[
+	{
+		"name": "Stand-up",
+		"description": "Stand-up pelo Zoom",
+		"startAt": "25/08/2020 16:30",
+        "finishAt": "25/08/2020 16:40"
+	},
+	{
+		"name": "101",
+		"description": "101 com CX via Zoom",
+		"startAt": "29/08/2020 13:30",
+        "finishAt": "29/08/2020 14:00"
+	}
+]
