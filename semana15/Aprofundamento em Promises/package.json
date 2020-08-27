@@ -1,0 +1,25 @@
+{
+  "name": "aprofundamento-em-promises",
+  "version": "1.0.0",
+  "description": "Aprofundamento em promises, Async, Await.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node ./build/index.js"
+  },
+  "keywords": [
+    "promises",
+    "async",
+    "await"
+  ],
+  "author": "Diego Miyabara",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^14.6.1",
+    "axios": "^0.20.0",
+    "moment": "^2.27.0"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0"
+  }
+}
