@@ -20,7 +20,13 @@ const getAllAccounts = () => {
                 CPF: ${acc.cpf}
                 Data de Nascimento: ${moment(acc.birthDate, "YYYY/MM/DD").format("DD/MM/YYYY")}
                 Saldo: ${acc.saldo}
-                Extrato: ${acc.extrato}
+                Extrato: ${acc.extrato.length === 0 ? "Não existem transações" : acc.extrato.map((conta: any) => {
+                    return `
+                        Descrição: ${conta.descricao}
+                        Data: ${moment(conta.data, "YYYY/MM/DD").format("DD/MM/YYYY")}
+                        Valor: R$ ${conta.valor.toFixed(2)}
+                    `
+                })}
                 `
             )
         });

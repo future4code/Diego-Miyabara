@@ -7,10 +7,11 @@ function transfer (nome: string, cpf: string, nome2: string, cpf2: string,valor:
             if(nome === acc.name && cpf === acc.cpf){
                 acc.saldo -= valor;
 
-                console.log("Transferência realizada com sucesso")
+                console.log("Valor da transferência retirado com sucesso!")
             }
             if(nome2 === acc.name && cpf2 === acc.cpf){
                 acc.saldo += valor;
+                console.log("Valor da transferência enviado com sucesso!")
             }
         }
 

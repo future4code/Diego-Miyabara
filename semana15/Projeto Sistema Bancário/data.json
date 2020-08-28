@@ -10,7 +10,20 @@
     "name": "Hyaguera da Hornet",
     "cpf": "025.888.999-25",
     "birthDate": "1995-12-25T02:00:00.000Z",
-    "saldo": 20,
+    "saldo": 15,
+    "extrato": [
+      {
+        "valor": 5,
+        "data": "2020-09-29T03:00:00.000Z",
+        "descricao": "Balinha de coca"
+      }
+    ]
+  },
+  {
+    "name": "Airton do Vinho",
+    "cpf": "132.123.255-22",
+    "birthDate": "2002-01-25T02:00:00.000Z",
+    "saldo": 0,
     "extrato": []
   }
 ]

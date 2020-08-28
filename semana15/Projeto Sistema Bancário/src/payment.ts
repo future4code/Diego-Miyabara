@@ -15,8 +15,8 @@ function payment (nome: string, cpf: string, valor: number, data: moment.Moment,
                 extrato.push(pagamento)
                 acc.saldo -= valor;
 
-                console.log("Pagamento realizado com sucesso")
-            }
+                console.log("Pagamento realizado com sucesso.")
+            } 
         }
 
         writeToDatabase(dataBase)

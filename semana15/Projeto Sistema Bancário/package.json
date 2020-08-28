@@ -9,7 +9,8 @@
     "getAllAccounts": "ts-node ./src/getAllAccounts.ts",
     "createAccount": "ts-node ./src/createAccount.ts",
     "deposit": "ts-node ./src/deposit.ts",
-    "transfer": "ts-node ./src/transfer.ts"
+    "transfer": "ts-node ./src/transfer.ts",
+    "payment": "ts-node ./src/payment.ts"
   },
   "author": "",
   "license": "ISC",
