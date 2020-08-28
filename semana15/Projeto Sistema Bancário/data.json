@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Leo da Hornet",
+    "cpf": "222.333.111-55",
+    "birthDate": "2019-08-19T03:00:00.000Z",
+    "saldo": 15,
+    "extrato": []
+  },
+  {
+    "name": "Hyaguera da Hornet",
+    "cpf": "025.888.999-25",
+    "birthDate": "1995-12-25T02:00:00.000Z",
+    "saldo": 20,
+    "extrato": []
+  }
+]
