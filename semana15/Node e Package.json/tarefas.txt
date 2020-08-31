@@ -1,0 +1,6 @@
+[
+ "Comprar Pão.",
+ "Ir na academia.",
+ "Fazer café.",
+ "Tomar banho."
+]
