@@ -89,9 +89,10 @@ const newSubscriber = async(name: string, email: string):Promise<void> => {
 
 const main = async () => {
     try{
-        const subscribers = getAllSubscribers()
+        const subscribers = await getAllSubscribers()
         // await createNews("Bora detona no backend", "Aprendendo promises no backend e tentando não fritar o cérebro.")
         // await newSubscriber("Diego", "diego@gmail.com")
+        console.log(subscribers)
     }
     catch(e){
         console.log(e.response.data)
