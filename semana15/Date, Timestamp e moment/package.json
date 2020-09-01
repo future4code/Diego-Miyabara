@@ -1,0 +1,21 @@
+{
+  "name": "date-timestamp-moment",
+  "version": "1.0.0",
+  "description": "Utilizando date, timestamp e moment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node ./build/index.js"
+  },
+  "keywords": [
+    "date",
+    "timestamp",
+    "moment"
+  ],
+  "author": "Diego Miyabara",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^14.6.0",
+    "moment": "^2.27.0"
+  }
+}
