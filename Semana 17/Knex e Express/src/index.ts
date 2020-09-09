@@ -258,3 +258,24 @@ app.get("/movie/all", async (req: Request, res: Response) => {
     res.status(400).send({message: error.message})
   }
 })
+
+const searchMovie = async(title?:string, synopsis?: string): Promise<any> => {
+  const response = await connection
+  .select("*")
+  .orderBy("release_date", "desc")
+  .where('title', 'LIKE', `%${title}%`)
+  .orWhere('synopsis', 'LIKE', `%${synopsis}%`)
+  .into("Movies")
+  console.log(response)
+  return response
+}
+
+app.get("/movie/search", async (req: Request, res: Response) => {
+  try {
+    const movies = await searchMovie(req.query.filter as string)
+
+    res.status(200).send({movies: movies})
+  } catch (error) {
+    res.status(400).send({message: error.message})
+  }
+})
