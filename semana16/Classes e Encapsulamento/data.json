@@ -1,0 +1,20 @@
+{
+  "accounts": [
+    {
+      "balance": -20,
+      "transactions": [
+        {
+          "date": "31/08/2020",
+          "value": 20,
+          "description": "Pagamento uber"
+        }
+      ],
+      "cpf": "123.123.123-12",
+      "name": "Diego",
+      "age": 30
+    }
+  ],
+  "fileManager": {
+    "fileName": "data.json"
+  }
+}
