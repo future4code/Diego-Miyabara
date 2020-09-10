@@ -164,6 +164,11 @@ VALUES (
 )
 ;
 
+d)
+SELECT Movies.id as movie_id, Movies.title as title, Oscar.name as oscar, Oscar.date
+FROM Movies
+JOIN Oscar on Movies.id = Oscar.movie_id;
+
 
 
 
