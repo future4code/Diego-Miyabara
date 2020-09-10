@@ -1,0 +1,25 @@
+{
+  "name": "sistema-bancario",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node ./src/index.ts",
+    "build": "tsc && node ./build/index.js",
+    "getAllAccounts": "ts-node ./src/getAllAccounts.ts",
+    "createAccount": "ts-node ./src/createAccount.ts",
+    "deposit": "ts-node ./src/deposit.ts",
+    "transfer": "ts-node ./src/transfer.ts",
+    "payment": "ts-node ./src/payment.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/moment": "^2.13.0",
+    "@types/node": "13.7.7",
+    "moment": "^2.27.0",
+    "ts-node": "^8.6.2",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.8.3"
+  }
+}
