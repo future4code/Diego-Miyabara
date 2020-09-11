@@ -179,7 +179,7 @@ const getTaskById = async (taskId: string): Promise<any> => {
     }
 }
 
-getTaskById("798w4")
+// getTaskById("798w4")
 
 app.get("/task/:id", async (req: Request, res: Response) => {
     try {
@@ -197,3 +197,34 @@ app.get("/task/:id", async (req: Request, res: Response) => {
     }
 })
 
+const getTaskByUserId = async (userId: string): Promise<any> => {
+    const response = await connection.raw(`
+        SELECT ToDoProjectTask.id as taskId, title, description, ToDoProjectTask.limit_date as limitDate, ToDoProjectTask.user_id as creatorUserId, status, nickname as creatoUserNickname
+        FROM ToDoProjectUser
+        JOIN ToDoProjectTask ON ToDoProjectUser.id = ToDoProjectTask.user_id
+        WHERE ToDoProjectUser.id = "${userId}";
+    `)
+
+    return response[0].map((task: any) => {
+        return {
+            taskId: task.taskId,
+            title: task.title,
+            description: task.description,
+            limitDate: moment(task.limitDate, "YYYY-MM-DD").format("DD/MM/YYYY"),
+            creatorUserId: task.creatorUserId,
+            status: task.status,
+            creatorUserNickname: task.creatoUserNickname
+        }
+    })
+}
+
+app.get("/task", async (req: Request, res: Response) => {
+    try {
+        const userId = req.query.creatorUserId as string
+        const response = await getTaskByUserId(userId)
+
+        res.status(200).send({Tarefas: response})
+    } catch (error) {
+        res.status(400).send({message: error.message})
+    }
+})
