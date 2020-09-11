@@ -261,3 +261,26 @@ app.get("/user", async(req: Request, res: Response) => {
         res.status(400).send({message: error.message})
     }
 })
+
+const designateResponsible = async (taskId: string, userId: string): Promise<void> => {
+    await connection("ToDoProjectResponsibleTaskUser")
+        .insert({
+            task_id: taskId,
+            user_id: userId
+        })
+}
+
+app.post("/task/responsible", async (req: Request, res: Response) => {
+    try {
+        if(req.body.task_id.length >0 && req.body.responsible_user_id.length >0){
+            await designateResponsible(req.body.task_id, req.body.responsible_user_id)
+
+            res.status(200).send({message: "Responsável pela tarefa designado."})
+        }else {
+            res.status(400).send({message: "Informe o id do usuário e da tarefa!"})
+        }
+        
+    } catch (error) {
+        res.status(400).send({message:error.message})
+    }
+})
