@@ -193,7 +193,7 @@ app.get("/task/:id", async (req: Request, res: Response) => {
         }
         
     } catch (error) {
-        res.status(400).send({message: error.message})
+        res.status(400).send({message: "Não foi possível encontrar esta tarefa!"})
     }
 })
 
@@ -224,6 +224,39 @@ app.get("/task", async (req: Request, res: Response) => {
         const response = await getTaskByUserId(userId)
 
         res.status(200).send({Tarefas: response})
+    } catch (error) {
+        res.status(400).send({message: error.message})
+    }
+})
+
+const getUser = async (nickname: string): Promise<any> => {
+    const response = await connection.raw(`
+        SELECT id, nickname
+        FROM ToDoProjectUser
+        WHERE name LIKE "%${nickname}%" OR nickname LIKE "%${nickname}%";
+    `)
+
+    return {
+        users: response[0].map((user: any) => {
+            return {
+                id: user.id,
+                nickname: user.nickname
+            }
+        })
+    }
+}
+
+app.get("/user", async(req: Request, res: Response) => {
+    try {
+        const query = req.query.query as string
+        if(query.length > 0){
+            const response = await getUser(query)
+
+            res.status(200).send(response)
+        }else {
+            res.status(400).send({message: "Informe algum parâmetro para busca."})
+        }
+        
     } catch (error) {
         res.status(400).send({message: error.message})
     }
