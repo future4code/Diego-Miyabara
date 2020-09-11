@@ -284,3 +284,35 @@ app.post("/task/responsible", async (req: Request, res: Response) => {
         res.status(400).send({message:error.message})
     }
 })
+
+const getResponsible = async (taskId: string): Promise<any> => {
+    const response = await connection.raw(`
+        SELECT ToDoProjectUser.id, nickname
+        FROM ToDoProjectUser
+        JOIN ToDoProjectResponsibleTaskUser ON ToDoProjectUser.id = ToDoProjectResponsibleTaskUser.user_id
+        WHERE ToDoProjectResponsibleTaskUser.task_id = "${taskId}";
+    `)
+    
+    return response[0][0]
+    
+}
+
+app.get("/task/:id/responsible", async (req: Request, res: Response) => {
+    try {
+        const id = req.params.id as string
+        if(id !== null) {
+            const response = await getResponsible(id)
+            if(response !== undefined) {
+                res.status(200).send({Responsável: response})
+            } else {
+                res.status(400).send({message: "Não foi possível encontrar o responsável por esta tarefa."})
+            }
+        } else {
+            res.status(400).send({message: "Informe o id da tarefa."})
+        }
+        
+        
+    } catch (error) {
+        res.status(400).send({message: error.message})
+    }
+})
