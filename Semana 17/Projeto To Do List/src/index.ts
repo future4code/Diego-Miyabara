@@ -1,5 +1,5 @@
 import knex from "knex";
-import express, { Request, Response } from "express";
+import express, { Request, response, Response } from "express";
 import dotenv from "dotenv";
 import { AddressInfo } from "net";
 import moment, { Moment } from 'moment'
@@ -181,21 +181,21 @@ const getTaskById = async (taskId: string): Promise<any> => {
 
 // getTaskById("798w4")
 
-app.get("/task/:id", async (req: Request, res: Response) => {
-    try {
-        const id = req.params.id as string
-        if (id.length > 0) {
-            const response = await getTaskById(id)
+// app.get("/task/:id", async (req: Request, res: Response) => {
+//     try {
+//         const id = req.params.id as string
+//         if (id.length > 0) {
+//             const response = await getTaskById(id)
 
-            res.status(200).send(response)
-        }else {
-            res.status(400).send("Informe o id da Tarefa.")
-        }
+//             res.status(200).send(response)
+//         }else {
+//             res.status(400).send("Informe o id da Tarefa.")
+//         }
         
-    } catch (error) {
-        res.status(400).send({message: "Não foi possível encontrar esta tarefa!"})
-    }
-})
+//     } catch (error) {
+//         res.status(400).send({message: "Não foi possível encontrar esta tarefa!"})
+//     }
+// })
 
 const getTaskByUserId = async (userId: string): Promise<any> => {
     const response = await connection.raw(`
@@ -314,5 +314,53 @@ app.get("/task/:id/responsible", async (req: Request, res: Response) => {
         
     } catch (error) {
         res.status(400).send({message: error.message})
+    }
+})
+
+const getTasksById = async (id: string): Promise<any> => {
+    const responseTask = await connection.raw(`
+        SELECT ToDoProjectTask.id as taskId, title, description, limit_date as limitDate, ToDoProjectTask.user_id as creatorUserId, ToDoProjectUser.nickname
+        FROM ToDoProjectUser
+        JOIN ToDoProjectTask ON ToDoProjectUser.id = ToDoProjectTask.user_id
+        WHERE ToDoProjectTask.id = "${id}";
+    `)
+
+    const responseResponsible = await connection.raw(`
+    SELECT ToDoProjectUser.id, nickname
+    FROM ToDoProjectUser
+    JOIN ToDoProjectResponsibleTaskUser ON ToDoProjectUser.id = ToDoProjectResponsibleTaskUser.user_id
+    WHERE ToDoProjectResponsibleTaskUser.task_id = "${id}";
+    `)
+
+
+    return {
+        taskId: responseTask[0][0].taskId,
+        title: responseTask[0][0].title,
+        description: responseTask[0][0].description,
+        limitDate: moment(responseTask[0][0].limitDate, "YYYY-MM-DD").format("DD/MM/YYYY"),
+        creatorUserId: responseTask[0][0].creatorUserId,
+        creatorUserNickname: responseTask[0][0].nickname,
+        responsibleUsers: responseResponsible[0].map((user:any) => {
+            return {
+                id: user.id,
+                nickname: user.nickname
+            }
+        })
+    }
+}
+
+app.get("/task/:id", async (req: Request, res: Response) => {
+    try {
+        const id = req.params.id as string
+        if (id.length > 0) {
+            const response = await getTasksById(id)
+
+            res.status(200).send(response)
+        }else {
+            res.status(400).send("Informe o id da Tarefa.")
+        }
+        
+    } catch (error) {
+        res.status(400).send({message: "Não foi possível encontrar esta tarefa!"})
     }
 })
