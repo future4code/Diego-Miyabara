@@ -1,6 +1,8 @@
 import { BaseDatabase } from "../src/data/BaseDatabase"
 import { PostDatabase } from "../src/data/PostDatabase"
 import { POST_TYPE } from "../src/model/Post"
+import dotenv from 'dotenv';
+dotenv.config();
 
 describe("Testes assincronos", () => {
     const post = {
