@@ -56,3 +56,11 @@ export const recoverCharacters = (characters: Character[]): Character[] => {
 
     return characters
 }
+
+export const increaseCharStrength = (character: Character, newStrength: number): void => {
+    if(character.strength < newStrength){
+        throw new Error("You can only increase your strength!")
+    }
+
+    character.strength = newStrength
+}
