@@ -149,4 +149,115 @@ describe("Testing perform attack", () => {
             expect(validatorMock).toHaveReturnedTimes(1)
         }
     })
+    //Exercício 6 - 1
+    test("Attacker's attack inferior to Defender's defense", () => {
+        expect.assertions(4)
+        const validatorMock = jest.fn(() => {
+            return true
+        })
+
+        const attacker: Character = {
+            name: "Mechanic",
+            life: 1200,
+            defense: 600,
+            strength: 400
+        }
+
+        const defender: Character = {
+            name: "Pikeman",
+            life: 1000,
+            defense: 450,
+            strength: 800
+        }
+
+        try {
+            performAttack2(attacker, defender, validatorMock)
+        } catch (error) {
+            expect(error.message).toBe("The attack had no effect!")
+            expect(validatorMock).toHaveBeenCalled()
+            expect(validatorMock).toHaveBeenCalledTimes(2)
+            expect(validatorMock).toHaveReturnedTimes(2)
+        }
+    })
+    //Exercício 6 - 2
+    test("Attacker's attack equals to Defender's defense", () => {
+        const validatorMock = jest.fn(() => {
+            return true
+        })
+
+        const attacker: Character = {
+            name: "Mechanic",
+            life: 1200,
+            defense: 600,
+            strength: 400
+        }
+
+        const defender: Character = {
+            name: "Pikeman",
+            life: 1000,
+            defense: 400,
+            strength: 800
+        }
+
+        performAttack2(attacker, defender, validatorMock)
+
+        expect(defender.life).toBe(1000)
+        expect(validatorMock).toHaveBeenCalled()
+        expect(validatorMock).toHaveBeenCalledTimes(2)
+        expect(validatorMock).toHaveReturnedTimes(2)
+    })
+    //Exercício 6 - 3
+    test("Defender's life goes to zero", () => {
+        const validatorMock = jest.fn(() => {
+            return true
+        })
+
+        const attacker: Character = {
+            name: "Mechanic",
+            life: 1200,
+            defense: 600,
+            strength: 600
+        }
+
+        const defender: Character = {
+            name: "Pikeman",
+            life: 200,
+            defense: 400,
+            strength: 800
+        }
+
+        performAttack2(attacker,defender,validatorMock)
+
+        expect(defender.life).toBe(0)
+        expect(validatorMock).toHaveBeenCalled()
+        expect(validatorMock).toHaveBeenCalledTimes(2)
+        expect(validatorMock).toHaveReturnedTimes(2)
+    })
+    //Exercício 6 - 4
+    test("Defender's life goes less than zero", () => {
+        const validatorMock = jest.fn(() => {
+            return true
+        })
+
+        const attacker: Character = {
+            name: "Mechanic",
+            life: 1200,
+            defense: 600,
+            strength: 700
+        }
+
+        const defender: Character = {
+            name: "Pikeman",
+            life: 200,
+            defense: 400,
+            strength: 800
+        }
+
+        performAttack2(attacker,defender,validatorMock)
+
+        expect(defender.life).toBeLessThan(0)
+        expect(validatorMock).toHaveBeenCalled()
+        expect(validatorMock).toHaveBeenCalledTimes(2)
+        expect(validatorMock).toHaveReturnedTimes(2)
+    })
 })

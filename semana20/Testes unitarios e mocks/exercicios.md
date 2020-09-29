@@ -22,3 +22,7 @@ b-c) Implementados no arquivo ex1.test.ts
 # Exercício 5
 
 a-b) Implementados no arquivo ex1.test.ts
+
+# Exercício 6 
+
+- Exercícios implementados no arquivo ex1.test.ts
