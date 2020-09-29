@@ -64,8 +64,12 @@ export const recoverCharacters = (characters: Character[]): Character[] => {
 }
 
 export const increaseCharStrength = (character: Character, newStrength: number): void => {
-    if(character.strength > newStrength){
+    if(character.strength >= newStrength){
         throw new Error("You can only increase your strength!")
+    }
+
+    if(newStrength > 2000) {
+        throw new Error("The strength's limit is 2000!")
     }
 
     character.strength = newStrength

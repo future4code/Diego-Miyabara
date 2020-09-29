@@ -373,6 +373,36 @@ describe("Increase strength", () => {
             expect(error.message).toBe("You can only increase your strength!")
         } 
     })
+
+    test("Error on increase of strength, if newStrength is the same as the char's strength", () => {
+        expect.assertions(1)
+        const char: Character = {
+            name: "Pikeman",
+            life: 200,
+            defense: 400,
+            strength: 800
+        }
+        try {
+            increaseCharStrength(char, 800)
+        } catch (error) {
+            expect(error.message).toBe("You can only increase your strength!")
+        } 
+    })
+
+    test("Error on increase of strength, newStrength higher than 2000", () => {
+        expect.assertions(1)
+        const char: Character = {
+            name: "Pikeman",
+            life: 200,
+            defense: 400,
+            strength: 800
+        }
+        try {
+            increaseCharStrength(char, 2100)
+        } catch (error) {
+            expect(error.message).toBe("The strength's limit is 2000!")
+        } 
+    })
 })
 
 describe("Decrease char's defense", () => {
