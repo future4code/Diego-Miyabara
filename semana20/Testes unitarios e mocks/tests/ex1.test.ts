@@ -284,4 +284,20 @@ describe("Recover Character", () => {
         expect(chars[0].life).toBe(1500)
         expect(chars[1].life).toBe(1500)
     })
+
+    test("Error on healing - 1 char", () => {
+        const chars: Character[] = [
+            {
+                name: "Pikeman",
+                life: 200,
+                defense: 400,
+                strength: 800
+            }]
+
+            try {
+                recoverCharacters(chars)
+            } catch (error) {
+                expect(error.message).toBe("Please invite a friend to come with you! We need at least 2 players in order to recover your life!")
+            }
+    })
 })
