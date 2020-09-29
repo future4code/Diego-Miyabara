@@ -1,4 +1,4 @@
-import { Character, increaseCharStrength, performAttack2, recoverCharacters, validateCharacter } from "../src/ex1"
+import { Character, decreaseCharDefense, increaseCharStrength, performAttack2, recoverCharacters, validateCharacter } from "../src/ex1"
 
 describe("Validade Character", () => {
     //Exercício 2a
@@ -329,6 +329,36 @@ describe("Increase strength", () => {
             increaseCharStrength(char, 600)
         } catch (error) {
             expect(error.message).toBe("You can only increase your strength!")
+        } 
+    })
+})
+
+describe("Decrease char's defense", () => {
+    test("Sucessfull decrease of defense", () => {
+        const char: Character = {
+            name: "Pikeman",
+            life: 200,
+            defense: 400,
+            strength: 800
+        }
+
+        decreaseCharDefense(char, 300)
+
+        expect(char.defense).toBe(300) 
+    })
+
+    test("Error on decreasing the defense", () => {
+        expect.assertions(1)
+        const char: Character = {
+            name: "Pikeman",
+            life: 200,
+            defense: 400,
+            strength: 800
+        }
+        try {
+            decreaseCharDefense(char, 500)
+        } catch (error) {
+            expect(error.message).toBe("Your shield can only be degrated!")
         } 
     })
 })
