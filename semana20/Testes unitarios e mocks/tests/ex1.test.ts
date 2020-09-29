@@ -1,4 +1,4 @@
-import { Character, performAttack2, recoverCharacters, validateCharacter } from "../src/ex1"
+import { Character, increaseCharStrength, performAttack2, recoverCharacters, validateCharacter } from "../src/ex1"
 
 describe("Validade Character", () => {
     //Exercício 2a
@@ -286,6 +286,7 @@ describe("Recover Character", () => {
     })
 
     test("Error on healing - 1 char", () => {
+        expect.assertions(1)
         const chars: Character[] = [
             {
                 name: "Pikeman",
@@ -299,5 +300,35 @@ describe("Recover Character", () => {
             } catch (error) {
                 expect(error.message).toBe("Please invite a friend to come with you! We need at least 2 players in order to recover your life!")
             }
+    })
+})
+
+describe("Increase strength", () => {
+    test("Sucessfull increase of strength", () => {
+        const char: Character = {
+            name: "Pikeman",
+            life: 200,
+            defense: 400,
+            strength: 800
+        }
+
+        increaseCharStrength(char, 1000)
+
+        expect(char.strength).toBe(1000) 
+    })
+
+    test("Error on increase of strength", () => {
+        expect.assertions(1)
+        const char: Character = {
+            name: "Pikeman",
+            life: 200,
+            defense: 400,
+            strength: 800
+        }
+        try {
+            increaseCharStrength(char, 600)
+        } catch (error) {
+            expect(error.message).toBe("You can only increase your strength!")
+        } 
     })
 })
