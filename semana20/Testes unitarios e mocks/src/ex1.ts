@@ -76,8 +76,12 @@ export const increaseCharStrength = (character: Character, newStrength: number):
 }
 
 export const decreaseCharDefense = (character: Character, newDefense: number): void => {
-    if(character.defense < newDefense){
+    if(character.defense <= newDefense){
         throw new Error("Your shield can only be degrated!")
+    }
+
+    if(newDefense < 0) {
+        throw new Error("Defense cannot be negative!")
     }
 
     character.defense = newDefense

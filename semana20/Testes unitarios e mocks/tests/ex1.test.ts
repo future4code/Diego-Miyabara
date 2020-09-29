@@ -419,7 +419,7 @@ describe("Decrease char's defense", () => {
         expect(char.defense).toBe(300) 
     })
 
-    test("Error on decreasing the defense", () => {
+    test("Error on decreasing the defense, newDefense higher than char's defense", () => {
         expect.assertions(1)
         const char: Character = {
             name: "Pikeman",
@@ -431,6 +431,36 @@ describe("Decrease char's defense", () => {
             decreaseCharDefense(char, 500)
         } catch (error) {
             expect(error.message).toBe("Your shield can only be degrated!")
+        } 
+    })
+
+    test("Error on decreasing the defense, newDefense equals to char's defense", () => {
+        expect.assertions(1)
+        const char: Character = {
+            name: "Pikeman",
+            life: 200,
+            defense: 400,
+            strength: 800
+        }
+        try {
+            decreaseCharDefense(char, 400)
+        } catch (error) {
+            expect(error.message).toBe("Your shield can only be degrated!")
+        } 
+    })
+
+    test("Error on decreasing the defense, newDefense negative", () => {
+        expect.assertions(1)
+        const char: Character = {
+            name: "Pikeman",
+            life: 200,
+            defense: 400,
+            strength: 800
+        }
+        try {
+            decreaseCharDefense(char, -400)
+        } catch (error) {
+            expect(error.message).toBe("Defense cannot be negative!")
         } 
     })
 })
