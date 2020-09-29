@@ -301,6 +301,48 @@ describe("Recover Character", () => {
                 expect(error.message).toBe("Please invite a friend to come with you! We need at least 2 players in order to recover your life!")
             }
     })
+
+    test("Error on healing - char's life 1500", () => {
+        expect.assertions(1)
+        const chars: Character[] = [
+            {
+                name: "Pikeman",
+                life: 200,
+                defense: 400,
+                strength: 800
+            },
+            {
+                name: "Mechanic",
+                life: 1500,
+                defense: 600,
+                strength: 700
+            }
+        ]
+
+            try {
+                recoverCharacters(chars)
+            } catch (error) {
+                expect(error.message).toBe("You cannot recover a character that his life is full!")
+            }
+    })
+
+    test("2 Error on healing - char's life 1500 and only 1 char", () => {
+        expect.assertions(1)
+        const chars: Character[] = [
+            {
+                name: "Mechanic",
+                life: 1500,
+                defense: 600,
+                strength: 700
+            }
+        ]
+
+            try {
+                recoverCharacters(chars)
+            } catch (error) {
+                expect(error.message).toBe("Please invite a friend to come with you! We need at least 2 players in order to recover your life!")
+            }
+    })
 })
 
 describe("Increase strength", () => {

@@ -49,6 +49,12 @@ export const recoverCharacters = (characters: Character[]): Character[] => {
     if(characters.length < 2) {
         throw new Error ("Please invite a friend to come with you! We need at least 2 players in order to recover your life!")
     }
+    
+    characters.map((char) => {
+        if(char.life === 1500) {
+            throw new Error("You cannot recover a character that his life is full!")
+        }
+    })
 
     characters.forEach((char) => {
         char.life = 1500
