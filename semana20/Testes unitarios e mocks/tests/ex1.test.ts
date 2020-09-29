@@ -1,4 +1,4 @@
-import { Character, performAttack2, validateCharacter } from "../src/ex1"
+import { Character, performAttack2, recoverCharacters, validateCharacter } from "../src/ex1"
 
 describe("Validade Character", () => {
     //Exercício 2a
@@ -259,5 +259,29 @@ describe("Testing perform attack", () => {
         expect(validatorMock).toHaveBeenCalled()
         expect(validatorMock).toHaveBeenCalledTimes(2)
         expect(validatorMock).toHaveReturnedTimes(2)
+    })
+})
+
+describe("Recover Character", () => {
+    test("Sucessfull healing", () => {
+        const chars: Character[] = [
+            {
+                name: "Pikeman",
+                life: 200,
+                defense: 400,
+                strength: 800
+            },
+            {
+                name: "Mechanic",
+                life: 1200,
+                defense: 600,
+                strength: 700
+            }
+        ]
+
+        recoverCharacters(chars)
+
+        expect(chars[0].life).toBe(1500)
+        expect(chars[1].life).toBe(1500)
     })
 })

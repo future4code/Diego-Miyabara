@@ -44,3 +44,15 @@ export const performAttack2 = (attacker: Character, defender: Character, validat
         throw new Error ("The attack had no effect!")
     }
 }
+
+export const recoverCharacters = (characters: Character[]): Character[] => {
+    if(characters.length < 2) {
+        throw new Error ("Please invite a friend to come with you! We need at least 2 players in order to recover your life!")
+    }
+
+    characters.forEach((char) => {
+        char.life = 1500
+    })
+
+    return characters
+}
