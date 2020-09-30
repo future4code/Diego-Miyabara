@@ -324,3 +324,35 @@ describe("getAllUsers tests", () => {
       })
    })
 })
+
+describe("test getProfile", () => {
+   let userDatabase = {}
+   let hashGenerator = {}
+   let tokenGenerator = {}
+   let idGenerator = {}
+   test("Fail to getProfile user undefined", async () => {
+      expect.assertions(2)
+      try {
+         const getProfile = jest.fn()
+         userDatabase = {getProfile}
+         const userBusiness = new UserBusiness(userDatabase as any, idGenerator as any, hashGenerator as any, tokenGenerator as any)
+
+         await userBusiness.getProfile("invalid Id")
+      } catch (error) {
+         expect(error.statusCode).toBe(404)
+         expect(error.message).toBe("User not found")
+      }
+   })
+
+   test("getProfile sucessfully", async() => {
+      const getProfile = jest.fn((id: string) => 
+      new User("id", "Diego", "diego@gmail.com", "cypherPassword", UserRole.ADMIN))
+      userDatabase = { getProfile }
+
+      const userBusiness = new UserBusiness(userDatabase as any, idGenerator as any, hashGenerator as any, tokenGenerator as any)
+
+      const response = await userBusiness.getProfile("id")
+      expect(getProfile).toHaveBeenCalledTimes(1)
+      expect(response.name).toBe("Diego")
+   })
+})
