@@ -1,5 +1,5 @@
 import { BaseDatabase } from "./BaseDatabase";
-import { Show } from "../model/Show";
+import { Show, ShowInputDTO } from "../model/Show";
 
 export class ShowDatabase extends BaseDatabase {
 
@@ -35,6 +35,17 @@ export class ShowDatabase extends BaseDatabase {
             band_id
             })
             .into(this.tableName);
+        } catch (error) {
+            throw new Error(error.sqlMessage || error.message);
+        }
+    }
+
+    public async getAllShows(): Promise<any[]> {
+        try {
+            const response = await super.getConnection()
+            .raw(`SELECT * FROM ${this.tableName}`)
+
+            return response[0]
         } catch (error) {
             throw new Error(error.sqlMessage || error.message);
         }

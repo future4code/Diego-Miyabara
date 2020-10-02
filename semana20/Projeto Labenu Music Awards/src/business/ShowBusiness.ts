@@ -1,7 +1,6 @@
 import { User, UserRole } from "../model/User";
 import { IdGenerator } from "../services/IdGenerator";
 import { Authenticator } from "../services/Authenticator";
-import { Band, BandInputDTO } from "../model/Band";
 import { ShowDatabase } from "../data/ShowDatabase";
 import { ShowInputDTO } from "../model/Show";
 
@@ -30,6 +29,22 @@ export class ShowBusiness {
             throw new Error ("End time must be between 9 to 23")
         }
 
+        if(show.start_time > show.end_time) {
+            throw new Error ("Start time cannot be later than end time")
+        }
+
+        const showDb = await this.showDatabase.getAllShows()
+
+        showDb && showDb.map((eachShow) => {
+            if(show.week_day === eachShow.week_day){
+                if(eachShow.start_time <= show.start_time  && show.start_time < eachShow.end_time){
+                    if(eachShow.start_time < show.end_time && show.end_time > eachShow.end_time){
+                        throw new Error("There is already a show registred at this time!")
+                    }
+                }
+            }
+        })
+
         const user = this.authenticator.getData(token)
 
         if (User.stringToUserRole(user.role) !== UserRole.ADMIN) {
@@ -40,5 +55,4 @@ export class ShowBusiness {
 
         return await this.showDatabase.createShow(id, show.week_day, show.start_time, show.end_time, show.band_id)
     }
-
 }
