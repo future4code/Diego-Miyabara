@@ -29,8 +29,8 @@ export class ShowBusiness {
             throw new Error ("End time must be between 9 to 23")
         }
 
-        if(show.start_time > show.end_time) {
-            throw new Error ("Start time cannot be later than end time")
+        if(show.start_time >= show.end_time) {
+            throw new Error ("Start time cannot be later or the same as end time")
         }
 
         const showDb = await this.showDatabase.getAllShows()
