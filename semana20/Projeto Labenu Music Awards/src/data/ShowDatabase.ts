@@ -1,5 +1,5 @@
 import { BaseDatabase } from "./BaseDatabase";
-import { Show, ShowInputDTO } from "../model/Show";
+import { Show, ShowInputDTO, ShowOutputDTO } from "../model/Show";
 
 export class ShowDatabase extends BaseDatabase {
 
@@ -51,7 +51,7 @@ export class ShowDatabase extends BaseDatabase {
         }
     }
 
-    public async getShowByWeekDay(week_day: string): Promise<any[]> {
+    public async getShowByWeekDay(week_day: string): Promise<ShowOutputDTO[]> {
         try {
             const response = await super.getConnection()
             .raw(`

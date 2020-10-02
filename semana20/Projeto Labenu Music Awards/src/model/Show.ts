@@ -63,3 +63,9 @@ export interface ShowInputDTO{
     end_time: number;
     band_id: string;
 }
+
+export interface ShowOutputDTO{
+    start_time: string,
+    name: string,
+    music_genre: string
+}

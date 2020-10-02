@@ -2,7 +2,7 @@ import { User, UserRole } from "../model/User";
 import { IdGenerator } from "../services/IdGenerator";
 import { Authenticator } from "../services/Authenticator";
 import { ShowDatabase } from "../data/ShowDatabase";
-import { ShowInputDTO } from "../model/Show";
+import { ShowInputDTO, ShowOutputDTO } from "../model/Show";
 
 export class ShowBusiness {
 
@@ -56,11 +56,11 @@ export class ShowBusiness {
         return await this.showDatabase.createShow(id, show.week_day, show.start_time, show.end_time, show.band_id)
     }
 
-    async getShowsByWeekDay (week_day: string, token: string): Promise<any[]> {
+    async getShowsByWeekDay (week_day: string, token: string): Promise<ShowOutputDTO[]> {
         if(!week_day) {
             throw new Error("Week day must be provided on query params")
         }
-        
+
         if(week_day !== "FRIDAY" && week_day !== "SATURDAY" && week_day !== "SUNDAY") {
             throw new Error ("Week day must be FRIDAY, SATURDAY or SUNDAY")
         }

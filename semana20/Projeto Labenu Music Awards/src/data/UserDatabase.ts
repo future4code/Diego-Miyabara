@@ -1,5 +1,6 @@
 import { BaseDatabase } from "./BaseDatabase";
 import { User } from "../model/User";
+import { InvalidParameterError } from "../error/InvalidParameterError";
 
 export class UserDatabase extends BaseDatabase {
 
@@ -36,9 +37,10 @@ export class UserDatabase extends BaseDatabase {
         })
         .into(this.tableName);
     } catch (error) {
-      throw new Error(error.sqlMessage || error.message);
+        throw new Error(error.sqlMessage || error.message);
+      }
     }
-  }
+
 
   public async getUserByEmail(email: string): Promise<User> {
     const result = await this.getConnection()
