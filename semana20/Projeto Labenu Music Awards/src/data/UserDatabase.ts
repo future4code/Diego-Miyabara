@@ -42,12 +42,12 @@ export class UserDatabase extends BaseDatabase {
     }
 
 
-  public async getUserByEmail(email: string): Promise<User> {
-    const result = await this.getConnection()
-      .select("*")
-      .from(this.tableName)
-      .where({ email });
+  public async getUserByEmail(email: string): Promise<User | undefined> {
+    const result = await super.getConnection()
+      .raw(`
+        SELECT * FROM ${this.tableName} WHERE email = "${email}";
+      `)
 
-    return User.toUserModel(result[0]);
+    return this.toModel(result[0][0]);
   }
 }

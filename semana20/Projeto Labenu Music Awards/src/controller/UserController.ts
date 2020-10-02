@@ -30,7 +30,7 @@ export class UserController {
             res.status(200).send({ message: "User created sucessfully!", token });
 
         } catch (error) {
-            res.status(400).send({ message: error.message });
+            res.status(error.code || 400).send({ message: error.message });
         }
 
         await BaseDatabase.destroyConnection();
@@ -39,15 +39,15 @@ export class UserController {
     async login(req: Request, res: Response) {
         try {
             const loginData: LoginInputDTO = {
-                email: req.body.email,
-                password: req.body.password
+                email: req.body.email as string,
+                password: req.body.password as string
             };
 
             const token = await UserController.userBusiness.login(loginData);
 
             res.status(200).send({ message: "User logged sucessfully!", token });
         } catch (error) {
-            res.status(400).send({ error: error.message });
+            res.status(error.code || 400).send({ message: error.message });
         }
 
         await BaseDatabase.destroyConnection();

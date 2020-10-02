@@ -4,6 +4,7 @@ import { IdGenerator } from "../services/IdGenerator";
 import { HashManager } from "../services/HashManager";
 import { Authenticator } from "../services/Authenticator";
 import { InvalidParameterError } from "../error/InvalidParameterError";
+import { NotFoundError } from "../error/NotFoundError";
 
 export class UserBusiness {
 
@@ -48,18 +49,18 @@ export class UserBusiness {
 
     async login(user: LoginInputDTO) {
         if(!user.email || !user.password) {
-            throw new Error("Please inform your email and your password.")
+            throw new InvalidParameterError("Please inform your email and your password.")
         }
 
-        const userFromDB = await this.userDatabase.getUserByEmail(user.email);
+        const userDb = await this.userDatabase.getUserByEmail(user.email);
 
-        if (!userFromDB) {
-            throw new Error("User not found.")
+        if (!userDb) {
+            throw new NotFoundError("User not found.")
         }
 
-        const hashCompare = await this.hashManager.compare(user.password, userFromDB.getPassword());
+        const hashCompare = await this.hashManager.compare(user.password, userDb && userDb.getPassword());
 
-        const accessToken = this.authenticator.generateToken({ id: userFromDB.getId(), role: userFromDB.getRole() });
+        const accessToken = this.authenticator.generateToken({ id: userDb && userDb.getId(), role: userDb && userDb.getRole() });
 
         if (!hashCompare) {
             throw new Error("Invalid Password!");

@@ -1,18 +1,17 @@
 import { UserBusiness } from "../src/business/UserBusiness"
-import { UserDatabase } from "../src/data/UserDatabase"
-import { User, UserRole } from "../src/model/User"
+import { LoginInputDTO, User, UserRole } from "../src/model/User"
 
 
-const userDatabase = {
+let userDatabase = {
     createUser: jest.fn( async(user: User) => {return {token:"fake token"}}),
-    login: jest.fn(async(email: string, password: string) => {return {token:"fake token"}})
+    getUserByEmail: jest.fn(async(email: string) => undefined)
 } as any
 
 const idGenerator = {
     generate: jest.fn(() => "id mock")
 } as any
 
-const hashManager = {
+let hashManager = {
     hash: jest.fn(async(password: string) => "cypherPassword"),
     compare: jest.fn(async(password: string, cypherPassword: string) => false)
 }as any
@@ -137,4 +136,65 @@ describe("endpoint create user", () => {
 
         expect(token).toBe("fake token")        
     })
+})
+
+describe("test endpoint login", () => {
+    test("Return error when email is not provided", async() => {
+        expect.assertions(2)
+        try {
+            const loginDTO: LoginInputDTO = {
+                email: "",
+                password: "Labenu123456"
+            }
+            await userBusiness.login(loginDTO)
+        } catch (error) {
+            expect(error.message).toBe("Please inform your email and your password.")
+            expect(error.code).toBe(422)
+        }
+    })
+
+    test("Return error when password is not provided", async() => {
+        expect.assertions(2)
+        try {
+            const loginDTO: LoginInputDTO = {
+                email: "diego@gmail.com",
+                password: ""
+            }
+            await userBusiness.login(loginDTO)
+        } catch (error) {
+            expect(error.message).toBe("Please inform your email and your password.")
+            expect(error.code).toBe(422)
+        }
+    })
+
+    test("Return error when user not found", async() => {
+        expect.assertions(2)
+        try {
+            const loginDTO: LoginInputDTO = {
+                email: "diego@gmail.com",
+                password: "Labenu@123"
+            }
+            await userBusiness.login(loginDTO)
+        } catch (error) {
+            expect(error.message).toBe("User not found.")
+            expect(error.code).toBe(404)
+        }
+    })
+
+    test("Sucessfully login when all informations are correct", async() => {
+        userDatabase = {getUserByEmail: jest.fn((id: string) => new User("id", "Diego Miyabara", "diego@gmail.com", "cypherPassword", User.stringToUserRole("ADMIN")))}
+        hashManager = {compare: jest.fn((password: string, cypherPassword: string) => true)}
+
+        const userBusiness = new UserBusiness(userDatabase, idGenerator, hashManager, authenticator)
+
+        const user: LoginInputDTO = {
+            email: "diego@gmail.com",
+            password: "cypherPassword"
+        }
+
+        const result = await userBusiness.login(user)
+
+        expect(result).toBe("fake token")
+    })
+
 })
