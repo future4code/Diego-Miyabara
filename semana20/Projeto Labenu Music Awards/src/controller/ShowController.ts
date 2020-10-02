@@ -39,19 +39,18 @@ export class ShowController {
         await BaseDatabase.destroyConnection();
     }
 
-    // async searchBand(req: Request, res: Response) {
-    //     try {
-    //         const name = req.query.name as string
-    //         const id = req.query.id as string
-    //         const token = req.headers.authorization as string
+    async getShowByWeekDay (req: Request, res: Response) {
+        try {
+            const week_day = req.query.week_day as string
+            const token = req.headers.authorization as string
 
-    //         const result = await BandController.bandBusiness.searchBand(token, name, id)
+            const shows = await ShowController.showBusiness.getShowsByWeekDay(week_day.toUpperCase(), token)
 
-    //         res.status(200).send({Band: result})
-    //     } catch (error) {
-    //         res.status(400).send({message: error.message})
-    //     } finally {
-    //         await BaseDatabase.destroyConnection()
-    //     }
-    // }
+            res.status(200).send({Shows: shows})
+        } catch (error) {
+            res.status(400).send({message: error.message})
+        } finally {
+            BaseDatabase.destroyConnection()
+        }
+    }
 }

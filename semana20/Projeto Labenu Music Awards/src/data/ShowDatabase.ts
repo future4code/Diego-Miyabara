@@ -50,4 +50,21 @@ export class ShowDatabase extends BaseDatabase {
             throw new Error(error.sqlMessage || error.message);
         }
     }
+
+    public async getShowByWeekDay(week_day: string): Promise<any[]> {
+        try {
+            const response = await super.getConnection()
+            .raw(`
+                SELECT LAMA_SHOWS.start_time, LAMA_BANDS.name, LAMA_BANDS.music_genre
+                FROM LAMA_BANDS
+                JOIN LAMA_SHOWS ON LAMA_BANDS.id = LAMA_SHOWS.band_id
+                WHERE LAMA_SHOWS.week_day = "${week_day}"
+                ORDER BY LAMA_SHOWS.start_time ASC;
+            `)
+
+            return response[0]
+        } catch (error) {
+            throw new Error(error.sqlMessage || error.message);
+        }
+    }
 }
