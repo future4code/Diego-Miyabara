@@ -1,4 +1,4 @@
-import { findMissingNumber } from ".."
+import { findMissingNumber } from "../src"
 
 
 describe("Missing number function tests", () => {
