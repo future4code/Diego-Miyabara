@@ -1,0 +1,17 @@
+{
+  "name": "logic-exercises",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "clear && echo \\\"Running tests...\\\" && jest",
+    "start": "tsc && node ./build/index.js"
+  },
+  "author": "Diego Miyabara",
+  "license": "ISC",
+  "dependencies": {
+    "@types/jest": "^26.0.15",
+    "jest": "^26.6.2",
+    "ts-node": "^9.0.0"
+  }
+}
